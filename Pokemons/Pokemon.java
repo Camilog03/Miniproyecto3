@@ -36,23 +36,18 @@ public abstract class Pokemon {
     public int getHp() {
         return hp;
     }
-
     public void setHp(int hp) {
         this.hp = hp;
     }
+
 
     public ArrayList<Attack> getAttacks() {
         return attacks;
     }
 
-    public void setAttacks(ArrayList<Attack> attacks) {
-        this.attacks = attacks;
-    }
-
-
     public abstract int doAttack(Attack attack);
 
     public void receiveDamage(int damage){
-        hp -= damage;
+        this.hp -= Math.max(0, this.hp - damage);
     }
 }
