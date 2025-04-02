@@ -1,6 +1,9 @@
-import java.util.ArrayList;
+package Pokemons;
 
-public class Pokemon {
+import java.util.ArrayList;
+import Actions.Attack;
+
+public abstract class Pokemon {
     private String name;
     private Type type;
     private int hp;
@@ -46,15 +49,10 @@ public class Pokemon {
         this.attacks = attacks;
     }
 
-    public int doAttack(Attack attack){
-        //Return the potence of the attack
-        return 0;
-    }
+
+    public abstract int doAttack(Attack attack);
 
     public void receiveDamage(int damage){
         hp -= damage;
     }
-
-
-
 }
