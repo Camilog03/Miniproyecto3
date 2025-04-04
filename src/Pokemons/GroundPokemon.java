@@ -1,13 +1,12 @@
 package src.Pokemons;
 
 import java.util.ArrayList;
-import Pokemons.Type;
 import src.Actions.Attack;
 
 public class GroundPokemon extends Pokemon {
 
-    public GroundPokemon(ArrayList<Attack> attacks, int hp, Type type, String name) {
-        super(attacks, hp, type, name);
+    public GroundPokemon(ArrayList<Attack> attacks, int hp, Type sss, String name) {
+        super(attacks, hp, sss, name);
     }
 
     @Override
