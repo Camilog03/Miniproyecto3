@@ -1,3 +1,5 @@
+package src.Actions;
+
 public enum TypeOfDamage {
     FIRE, WATER, GRASS, 
     ELECTRIC, PSYCHIC, GROUND, 

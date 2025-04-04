@@ -1,9 +1,10 @@
 package src.Pokemons;
 
 import java.util.ArrayList;
-import Actions.Attack;
-import Pokemons.Pokemon;
+
+
 import Pokemons.Type;
+import src.Actions.Attack;
 
 public class ElectricPokemon extends Pokemon {
 

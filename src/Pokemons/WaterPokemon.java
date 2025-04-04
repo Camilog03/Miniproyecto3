@@ -1,7 +1,8 @@
-package Pokemons;
+package src.Pokemons;
 
 import java.util.ArrayList;
-import Actions.Attack;
+import Pokemons.Type;
+import src.Actions.Attack;
 
 public class WaterPokemon extends Pokemon {
 
