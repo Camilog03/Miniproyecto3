@@ -11,6 +11,7 @@ public class ElectricPokemon extends Pokemon {
 
     @Override
     public int doAttack(Attack attack) {
+
         return 0;
     }
 }

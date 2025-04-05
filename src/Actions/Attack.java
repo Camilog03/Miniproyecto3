@@ -1,12 +1,14 @@
 package src.Actions;
 
+import src.Pokemons.Type;
+
 public class Attack {
     private String name;
-    private TypeOfDamage typeOfDamage;
+    private Type typeOfDamage;
     private int attackPower;
 
 
-    public Attack(String name, TypeOfDamage typeOfDamage, int attackPower) {
+    public Attack(String name, Type typeOfDamage, int attackPower) {
         this.name = name;
         this.typeOfDamage = typeOfDamage;
         this.attackPower = attackPower;
@@ -23,12 +25,12 @@ public class Attack {
     }
 
 
-    public TypeOfDamage getTypeOfDamage() {
+    public Type getTypeOfDamage() {
         return typeOfDamage;
     }
 
 
-    public void setTypeOfDamage(TypeOfDamage typeOfDamage) {
+    public void setTypeOfDamage(Type typeOfDamage) {
         this.typeOfDamage = typeOfDamage;
     }
 
