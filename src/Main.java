@@ -1,4 +1,4 @@
-import src.Pokemons.*;
+import src.pokemons.*;
 
 public class Main {
     Pokemon pokemon;

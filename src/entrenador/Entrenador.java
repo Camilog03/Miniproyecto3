@@ -1,4 +1,10 @@
+package src.entrenador;
+
 import java.util.ArrayList;
+import src.pokemons.Pokemon;
+import src.pokemons.Type;
+
+
 
 public class Entrenador {
     private String trainerName;

@@ -1,6 +1,6 @@
-package src.Actions;
+package src.actions;
 
-import src.Pokemons.Type;
+import src.pokemons.Type;
 
 public class Attack {
     private String name;

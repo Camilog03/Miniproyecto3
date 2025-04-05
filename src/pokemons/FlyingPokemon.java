@@ -1,7 +1,7 @@
-package src.Pokemons;
+package src.pokemons;
 
 import java.util.ArrayList;
-import src.Actions.Attack;
+import src.actions.Attack;
 
 public class FlyingPokemon extends Pokemon {
 

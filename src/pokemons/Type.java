@@ -1,4 +1,4 @@
-package src.Pokemons;
+package src.pokemons;
 
 public enum Type {
     FIRE,

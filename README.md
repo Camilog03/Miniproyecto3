@@ -23,7 +23,7 @@ Este proyecto es un simulador de batallas Pokémon desarrollado en **Java**, apl
  │   │   ├── WaterPokemon.java
  │   │   ├── Type.java
  │   ├── 📂 Actions
- │   │   ├── src.Actions.Attack.java
+ │   │   ├── src.actions.Attack.java
  │   ├── 📂 Trainers
  │   │   ├── Trainer.java
  │   ├── Main.java
