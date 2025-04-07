@@ -21,6 +21,8 @@ public class Trainer {
         return trainerName;
     }
 
+    public void setTrainerName(String trainerName) {this.trainerName = trainerName;}
+
     public ArrayList<Pokemon> getSelectPokemonslist() {
         return selectPokemonslist;
     }
@@ -33,22 +35,22 @@ public class Trainer {
     public void randomPokemon(){
         ArrayList<Pokemon> randomPokemons = new ArrayList<>();
 
-    // FIRE
+        // FIRE
         randomPokemons.add(new FirePokemon("Charmander", Type.FIRE, 39.0, 43.0));
         randomPokemons.add(new FirePokemon("Vulpix", Type.FIRE, 38.0, 40.0));
         randomPokemons.add(new FirePokemon("Growlithe", Type.FIRE, 55.0, 45.0));
 
-    // WATER
+        // WATER
         randomPokemons.add(new WaterPokemon("Squirtle", Type.WATER, 44.0, 65.0));
         randomPokemons.add(new WaterPokemon("Psyduck", Type.WATER, 50.0, 48.0));
         randomPokemons.add(new WaterPokemon("Totodile", Type.WATER, 50.0, 64.0));
 
-    // ELECTRIC
+        // ELECTRIC
         randomPokemons.add(new ElectricPokemon("Pikachu", Type.ELECTRIC, 35.0, 40.0));
         randomPokemons.add(new ElectricPokemon("Mareep", Type.ELECTRIC, 55.0, 40.0));
         randomPokemons.add(new ElectricPokemon("Magnemite", Type.ELECTRIC, 25.0, 70.0));
 
-    // PLANT
+        // PLANT
         randomPokemons.add(new PlantPokemon("Bulbasaur", Type.PLANT, 45.0, 49.0));
         randomPokemons.add(new PlantPokemon("Bellsprout", Type.PLANT, 50.0, 35.0));
         randomPokemons.add(new PlantPokemon("Treecko", Type.PLANT, 40.0, 35.0));
@@ -58,12 +60,12 @@ public class Trainer {
         randomPokemons.add(new RockPokemon("Onix", Type.ROCK, 35.0, 160.0));
         randomPokemons.add(new RockPokemon("Nosepass", Type.ROCK, 30.0, 135.0));
 
-    // GROUND
+        // GROUND
         randomPokemons.add(new GroundPokemon("Sandshrew", Type.GROUND, 50.0, 85.0));
         randomPokemons.add(new GroundPokemon("Diglett", Type.GROUND, 10.0, 25.0));
         randomPokemons.add(new GroundPokemon("Phanpy", Type.GROUND, 90.0, 60.0));
 
-    // FLYING
+        // FLYING
         randomPokemons.add(new FlyingPokemon("Pidgey", Type.FLYING, 40.0, 35.0));
         randomPokemons.add(new FlyingPokemon("Spearow", Type.FLYING, 40.0, 30.0));
         randomPokemons.add(new FlyingPokemon("Taillow", Type.FLYING, 40.0, 30.0));
@@ -73,7 +75,9 @@ public class Trainer {
         for (int i = 0; i < MAX_POKEMONS; i++) {
             selectPokemonslist.add(randomPokemons.get(rand.nextInt(selectPokemonslist.size())));
             for (int j = 0; j < Pokemon.getMaxAttacks(); j++) {
-                selectPokemonslist.getLast().selectAttackRandom(rand.nextInt(15)); //15 DEBE SER CAMBIADO A LA CANTIDAD DE ATAQUES DE LA CLASE
+                selectPokemonslist.getLast().selectAttackRandom(rand.nextInt(15)); /*15 NEED TO BE CHANGED AS AN ATTRIBUTE THAT REPRESENTS
+                                                                                            THE AMOUNT OF ATTACKS THAT ARE ON THE CLASS
+                                                                                            */
             }
         }
     }
@@ -86,13 +90,13 @@ public class Trainer {
 
         for (int i = 0; i < getMaxPokemon(); i++) {
             System.out.println("Pokemon " + (i+1));
-            System.out.println("Ingresa el nombre de tu pokemon:");
+            System.out.print("Ingresa el nombre de tu pokemon:");
             String name = sc.nextLine();
 
-            System.out.println("Ingresa la vida (hp) de tu pokemon: ");
+            System.out.print("Ingresa la vida (hp) de tu pokemon: ");
             int hp = sc.nextInt();
 
-            System.out.println("Ingresa la defensa (DEF) de tu pokemon: ");
+            System.out.print("Ingresa la defensa (DEF) de tu pokemon: ");
             int defense = sc.nextInt();
 
             sc.nextLine();
@@ -108,7 +112,7 @@ public class Trainer {
             Type type = null;
             //To receive a valid option
             while(!option){
-                System.out.println("Ingresa el tipo de tu pokemon:");
+                System.out.print("Ingresa el tipo de tu pokemon:");
                 String election = sc.nextLine().toUpperCase();
 
                 for (Type t : Type.values()) {
@@ -156,7 +160,7 @@ public class Trainer {
                 default:
                     break;
             }
-
+            sc.nextLine();
         }
         sc.close();
     }

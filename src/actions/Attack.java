@@ -7,14 +7,14 @@ public class Attack {
     private final Type typeOfDamage;
     private final double attackPower;
 
-
+    //Constructor
     public Attack(String name, Type typeOfDamage, double attackPower) {
         this.name = name;
         this.typeOfDamage = typeOfDamage;
         this.attackPower = attackPower;
     }
 
-
+    //Setters and Getters
     public String getName() {
         return name;
     }
@@ -27,7 +27,9 @@ public class Attack {
         return attackPower;
     }
 
-    public String toString() {return name + " ,Tipo:" + typeOfDamage + ", Portencia: " + attackPower;}
+    //toString method to print the object on the console
+    @Override
+    public String toString() {return name + " ,Tipo:" + typeOfDamage + ", Potencia: " + attackPower;}
 
     
 }
