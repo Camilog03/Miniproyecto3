@@ -1,8 +1,12 @@
-import src.pokemons.*;
+package src;
+
+import src.characters.Trainer;
+import src.pokemons.Type;
 
 public class Main {
-    Pokemon pokemon;
     public static void main(String[] args) {
-        System.out.println("Hello, World!");
+        Trainer trainer1 = new Trainer("Carlitos");
+        Trainer trainer2 = new Trainer("Manolo");
+
     }
 }

@@ -3,12 +3,12 @@ package src.actions;
 import src.pokemons.Type;
 
 public class Attack {
-    private String name;
-    private Type typeOfDamage;
-    private int attackPower;
+    private final String name;
+    private final Type typeOfDamage;
+    private final double attackPower;
 
 
-    public Attack(String name, Type typeOfDamage, int attackPower) {
+    public Attack(String name, Type typeOfDamage, double attackPower) {
         this.name = name;
         this.typeOfDamage = typeOfDamage;
         this.attackPower = attackPower;
@@ -19,30 +19,16 @@ public class Attack {
         return name;
     }
 
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
     public Type getTypeOfDamage() {
         return typeOfDamage;
     }
 
-
-    public void setTypeOfDamage(Type typeOfDamage) {
-        this.typeOfDamage = typeOfDamage;
-    }
-
-
-    public int getAttackPower() {
+    public double getAttackPower() {
         return attackPower;
     }
 
+    public String toString() {return name + " ,Tipo:" + typeOfDamage + ", Portencia: " + attackPower;}
 
-    public void setAttackPower(int attackPower) {
-        this.attackPower = attackPower;
-    }
     
 }
 

@@ -25,7 +25,7 @@ Este proyecto es un simulador de batallas Pokémon desarrollado en **Java**, apl
  │   ├── 📂 Actions
  │   │   ├── src.actions.Attack.java
  │   ├── 📂 Trainers
- │   │   ├── Trainer.java
+ │   │   ├── src.characters.Trainer.java
  │   ├── Main.java
  ├── README.md
 ```

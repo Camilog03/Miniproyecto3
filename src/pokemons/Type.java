@@ -7,5 +7,5 @@ public enum Type {
     GROUND,
     FLYING,
     ROCK,
-    PLANT
+    PLANT;
 }
