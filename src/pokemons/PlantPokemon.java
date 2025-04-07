@@ -5,6 +5,7 @@ import src.actions.Attack;
 
 public class PlantPokemon extends Pokemon {
 
+    //Constructor and somes attacks to the type of pokemon
     public PlantPokemon(String name, Type type, double hp, double defense) {
         super(name, type, hp, defense);
         attacksOfClass.add(new Attack("Latigazo", Type.PLANT, 35.0));

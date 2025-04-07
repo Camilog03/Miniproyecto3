@@ -5,6 +5,7 @@ import src.actions.Attack;
 
 public class WaterPokemon extends Pokemon {
 
+    //Constructor and somes attacks to the type of pokemon
     public WaterPokemon(String name, Type type, double hp, double defense) {
         super(name, type, hp, defense);
         attacksOfClass.add(new Attack("Pistola Agua", Type.WATER, 30.0));

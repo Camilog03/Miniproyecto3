@@ -6,7 +6,7 @@ import src.actions.Attack;
 public class ElectricPokemon extends Pokemon {
 
 
-
+    //Constructor and somes attacks to the type of pokemon
     public ElectricPokemon(String name, Type type, double hp, double defense) {
         super(name, type, hp, defense);
         attacksOfClass.add(new Attack("Impactrueno", Type.ELECTRIC, 35.0));
