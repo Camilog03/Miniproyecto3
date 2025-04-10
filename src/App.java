@@ -19,7 +19,6 @@ public class App {
         //Creating trainers
         System.out.print("Entrenador 1: ");
         Trainer trainer1 = new Trainer(scanner.nextLine());
-
         System.out.print("Entrenador 2: ");
         Trainer trainer2 = new Trainer(scanner.nextLine());
 
