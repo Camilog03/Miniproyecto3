@@ -95,12 +95,15 @@ public class App {
             scanner.nextLine(); // Limpiar el buffer
         }
 
-        if(option == 1){
-            trainer.addCreatedPokemon();
-            trainer.showPokemons();
-        }else{
-            trainer.randomPokemon();
-            trainer.showPokemons();
+        switch (option) {
+            case 1:
+                trainer.addCreatedPokemon(scanner);
+                trainer.showPokemons();
+                break;
+            case 2:
+                trainer.randomPokemon();
+                trainer.showPokemons();
+                break;
         }
     }
 

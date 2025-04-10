@@ -8,7 +8,7 @@ import src.pokemons.*;
 public class Trainer {
 
     private String trainerName;
-    private static final byte MAX_POKEMONS = 1;
+    private static final byte MAX_POKEMONS = 3;
     private ArrayList<Pokemon> selectPokemonslist = new ArrayList<Pokemon>();
 
 
@@ -74,7 +74,7 @@ public class Trainer {
         for (int i = 0; i < MAX_POKEMONS; i++) {
             selectPokemonslist.add(randomPokemons.get(rand.nextInt(randomPokemons.size())));
             for (int j = 0; j < Pokemon.getMaxAttacks(); j++) {
-                selectPokemonslist.get(selectPokemonslist.size() - 1).selectAttackRandom(rand);
+                selectPokemonslist.get(selectPokemonslist.size() - 1).selectAttackRandom(rand.nextInt(15));
                 /* 15 NEED TO BE CHANGED AS AN ATTRIBUTE THAT REPRESENTS
                    THE AMOUNT OF ATTACKS THAT ARE ON THE CLASS */
             }
@@ -104,41 +104,40 @@ public class Trainer {
     }
 
     //Method to add pokemon created by the trainer
-    public void addCreatedPokemon(){
-        Scanner sc = new Scanner(System.in);
+    public void addCreatedPokemon(Scanner scanner){
         System.out.println("\n\nVamos a crear tus pokemones!");
 
         for (int i = 0; i < getMaxPokemon(); i++) {
-            System.out.println("\nPokemon " + (i+1));
+            System.out.println("\nPokemon " + (i + 1));
             System.out.print("Ingresa el nombre de tu pokemon:");
-            String name = sc.nextLine();
+            String name = scanner.nextLine();
 
             System.out.print("Ingresa la vida (hp) de tu pokemon: ");
-            int hp = sc.nextInt();
+            int hp = scanner.nextInt();
 
             System.out.print("Ingresa la defensa (DEF) de tu pokemon: ");
-            int defense = sc.nextInt();
+            int defense = scanner.nextInt();
 
-            sc.nextLine();
+            scanner.nextLine();
 
             System.out.println("\n-----------Types of Pokemons----------");
             byte counter = 1;
             for (Type types : Type.values()) {
-                System.out.println(counter + ". "+ types);
+                System.out.println(counter + ". " + types);
                 counter++;
             }
 
             boolean option = false;
             Type type = null;
             //To receive a valid option
-            while(!option){
+            while (!option) {
                 System.out.print("\nIngresa el tipo de tu pokemon:");
-                String election = sc.nextLine().toUpperCase();
+                String election = scanner.nextLine().toUpperCase();
 
                 for (Type t : Type.values()) {
-                    if(t.name().equals(election)){
+                    if (t.name().equals(election)) {
                         type = t;
-                        option=true;
+                        option = true;
                         break;
                     }
                 }
@@ -151,37 +150,36 @@ public class Trainer {
             switch (type) {
                 case ELECTRIC:
                     selectPokemonslist.add(new ElectricPokemon(name, type, hp, defense));
-                    selectPokemonslist.getLast().selectAttack(sc);
+                    selectPokemonslist.getLast().selectAttack(scanner);
                     break;
                 case FIRE:
                     selectPokemonslist.add(new FirePokemon(name, type, hp, defense));
-                    selectPokemonslist.getLast().selectAttack(sc);
+                    selectPokemonslist.getLast().selectAttack(scanner);
                     break;
                 case FLYING:
                     selectPokemonslist.add(new FlyingPokemon(name, type, hp, defense));
-                    selectPokemonslist.getLast().selectAttack(sc);
+                    selectPokemonslist.getLast().selectAttack(scanner);
                     break;
                 case GROUND:
                     selectPokemonslist.add(new GroundPokemon(name, type, hp, defense));
-                    selectPokemonslist.getLast().selectAttack(sc);
+                    selectPokemonslist.getLast().selectAttack(scanner);
                     break;
                 case PLANT:
                     selectPokemonslist.add(new PlantPokemon(name, type, hp, defense));
-                    selectPokemonslist.getLast().selectAttack(sc);
+                    selectPokemonslist.getLast().selectAttack(scanner);
                     break;
                 case ROCK:
                     selectPokemonslist.add(new RockPokemon(name, type, hp, defense));
-                    selectPokemonslist.getLast().selectAttack(sc);
+                    selectPokemonslist.getLast().selectAttack(scanner);
                     break;
                 case WATER:
                     selectPokemonslist.add(new WaterPokemon(name, type, hp, defense));
-                    selectPokemonslist.getLast().selectAttack(sc);
+                    selectPokemonslist.getLast().selectAttack(scanner);
                     break;
                 default:
                     break;
             }
-            sc.nextLine();
+            scanner.nextLine();
         }
-        sc.close();
     }
 }
