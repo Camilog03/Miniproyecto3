@@ -55,7 +55,7 @@ public class Trainer {
         randomPokemons.add(new PlantPokemon("Bellsprout", Type.PLANT, 50.0, 35.0));
         randomPokemons.add(new PlantPokemon("Treecko", Type.PLANT, 40.0, 35.0));
 
-    // ROCK
+        // ROCK
         randomPokemons.add(new RockPokemon("Geodude", Type.ROCK, 40.0, 100.0));
         randomPokemons.add(new RockPokemon("Onix", Type.ROCK, 35.0, 160.0));
         randomPokemons.add(new RockPokemon("Nosepass", Type.ROCK, 30.0, 135.0));
@@ -73,23 +73,31 @@ public class Trainer {
         Random rand = new Random();
 
         for (int i = 0; i < MAX_POKEMONS; i++) {
-            selectPokemonslist.add(randomPokemons.get(rand.nextInt(selectPokemonslist.size())));
+            selectPokemonslist.add(randomPokemons.get(rand.nextInt(randomPokemons.size())));
             for (int j = 0; j < Pokemon.getMaxAttacks(); j++) {
-                selectPokemonslist.getLast().selectAttackRandom(rand.nextInt(15)); /*15 NEED TO BE CHANGED AS AN ATTRIBUTE THAT REPRESENTS
-                                                                                            THE AMOUNT OF ATTACKS THAT ARE ON THE CLASS
-                                                                                            */
+                selectPokemonslist.get(selectPokemonslist.size() - 1).selectAttackRandom(rand.nextInt(15)); 
+                /* 15 NEED TO BE CHANGED AS AN ATTRIBUTE THAT REPRESENTS
+                   THE AMOUNT OF ATTACKS THAT ARE ON THE CLASS */
             }
         }
     }
 
-    
+    public void showPokemons() {
+
+        System.out.println("\nPokemones del entrenador " + trainerName + ":");
+        for (int i = 0; i < selectPokemonslist.size(); i++) {
+            Pokemon pokemon = selectPokemonslist.get(i);
+            System.out.println((i + 1) + ". " + pokemon);
+        }
+    }
+
     //Method to add pokemon created by the trainer
     public void addCreatedPokemon(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("Vamos a crear tus pokemones!");
+        System.out.println("\n\nVamos a crear tus pokemones!");
 
         for (int i = 0; i < getMaxPokemon(); i++) {
-            System.out.println("Pokemon " + (i+1));
+            System.out.println("\nPokemon " + (i+1));
             System.out.print("Ingresa el nombre de tu pokemon:");
             String name = sc.nextLine();
 
@@ -101,7 +109,7 @@ public class Trainer {
 
             sc.nextLine();
 
-            System.out.println("-----------Types of Pokemons----------");
+            System.out.println("\n-----------Types of Pokemons----------");
             byte counter = 1;
             for (Type types : Type.values()) {
                 System.out.println(counter + ". "+ types);
@@ -112,7 +120,7 @@ public class Trainer {
             Type type = null;
             //To receive a valid option
             while(!option){
-                System.out.print("Ingresa el tipo de tu pokemon:");
+                System.out.print("\nIngresa el tipo de tu pokemon:");
                 String election = sc.nextLine().toUpperCase();
 
                 for (Type t : Type.values()) {
