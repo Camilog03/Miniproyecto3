@@ -97,7 +97,7 @@ public class Trainer {
         System.out.println("\n\nVamos a crear tus pokemones!");
 
         for (int i = 0; i < getMaxPokemon(); i++) {
-            System.out.println("\nPokemon " + (i+1));
+            System.out.println("Pokemon " + (i+1));
             System.out.print("Ingresa el nombre de tu pokemon:");
             String name = sc.nextLine();
 
@@ -120,7 +120,7 @@ public class Trainer {
             Type type = null;
             //To receive a valid option
             while(!option){
-                System.out.print("\nIngresa el tipo de tu pokemon:");
+                System.out.print("Ingresa el tipo de tu pokemon:");
                 String election = sc.nextLine().toUpperCase();
 
                 for (Type t : Type.values()) {
