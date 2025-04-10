@@ -101,8 +101,15 @@ public abstract class Pokemon implements Comparable<Pokemon> {
     }
 
     //Random Attacks generator
-    public void selectAttackRandom(int indexRandomAttack){
-        attackSelected.add(attacksOfClass.get(indexRandomAttack));
+    public void selectAttackRandom(){
+        Random random = new Random();
+
+        int indexAttack;
+        do{
+            indexAttack = random.nextInt(attacksOfClass.size());
+        }while(attackSelected.contains(attacksOfClass.get(indexAttack)));
+
+        attackSelected.add(attacksOfClass.get(indexAttack));
     }
 
     //toString method to print the object on the console
