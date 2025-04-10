@@ -1,6 +1,7 @@
 package src.pokemons;
 
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.Scanner;
 
 import src.actions.Attack;
@@ -8,12 +9,12 @@ import src.actions.Attack;
 public abstract class Pokemon implements Comparable<Pokemon> {
     private final String name;
     private final Type type;
-    private static final byte MAXATTACKS = 4;
+    protected static final byte MAXATTACKS = 4;
     private double hp;
     private double defense;
     private boolean alive = true;
     protected ArrayList<Attack> attacksOfClass = new ArrayList<Attack>();
-    private ArrayList<Attack> attackSelected = new ArrayList<Attack>(MAXATTACKS);
+    protected ArrayList<Attack> attackSelected = new ArrayList<Attack>(MAXATTACKS);
 
     @Override //Order in which any type of list will order the pokemons (it will order in ascending for their hp)
     public int compareTo(Pokemon other) {
@@ -62,11 +63,11 @@ public abstract class Pokemon implements Comparable<Pokemon> {
     //Other methods
 
     //Attack method that need to be define on each type of pokemon
-    public abstract void doAttack(Pokemon oponentPokemon,Attack attack);
+    public abstract void doAttack(Pokemon oponentPokemon, Scanner scanner);
 
     //Receive damage method
     public void receiveDamage(double damage){
-        this.hp -= Math.max(0, this.hp - damage);
+        this.hp = Math.max(0, this.hp - damage);
         if(this.hp <= 0){
             this.alive = false;
         }
@@ -74,11 +75,11 @@ public abstract class Pokemon implements Comparable<Pokemon> {
 
     //Selected the attacks of the pokemon
     public void selectAttack(Scanner scanner){
+        System.out.println("----------- ATAQUES DE TIPO "+ type + " -----------");
         for (int i = 0; i < attacksOfClass.size(); i += 2) {
             if (i + 1 < attacksOfClass.size()) {
                 System.out.println((i + 1) + ". " + attacksOfClass.get(i) + "\t\t" + (i + 2) + ". " + attacksOfClass.get(i + 1));
             } else {
-                // Si hay un elemento sin pareja (cantidad impar)
                 System.out.println((i + 1) + ". " + attacksOfClass.get(i));
             }
         }
@@ -92,13 +93,28 @@ public abstract class Pokemon implements Comparable<Pokemon> {
         }
     }
 
-    public void selectAttackRandom(int indexRandomAttack){
-        attackSelected.add(attacksOfClass.get(indexRandomAttack));
+    //Shows attacks
+    public void showsAttacks(){
+        for (int i = 0; i < MAXATTACKS; i++) {
+            System.out.println((i + 1) + ". " + attackSelected.get(i));
+        }
+    }
+
+    //Random Attacks generator
+    public void selectAttackRandom(){
+        Random random = new Random();
+
+        int indexAttack;
+        do{
+            indexAttack = random.nextInt(attacksOfClass.size());
+        }while(attackSelected.contains(attacksOfClass.get(indexAttack)));
+
+        attackSelected.add(attacksOfClass.get(indexAttack));
     }
 
     //toString method to print the object on the console
     public String toString() {
-        return name + " " + type + " " + hp + " " + defense + " " + attackSelected;
+        return name + "\tTipo:" + type + "\tHP:" + hp + "\tDEF:" + defense + "\tEstado: " + (alive ? "Vivo" : "Muerto");
     }
 
 }

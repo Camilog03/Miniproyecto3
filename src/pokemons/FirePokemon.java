@@ -1,6 +1,8 @@
 package src.pokemons;
 
 import java.util.ArrayList;
+import java.util.Scanner;
+
 import src.actions.Attack;
 
 public class FirePokemon extends Pokemon {
@@ -27,7 +29,13 @@ public class FirePokemon extends Pokemon {
     }
 
     @Override
-    public void doAttack(Pokemon oponentPokemon, Attack attack) {
+    public void doAttack(Pokemon oponentPokemon, Scanner scanner) {
+        System.out.println("\t\tAtaques");
+        for (int i = 0; i < MAXATTACKS; i++) {
+            System.out.println((i + 1) + ". " + attackSelected.get(i));
+        }
+        int indexAttackSelected;
+        indexAttackSelected = scanner.nextInt();
         double effectivity;
         switch (oponentPokemon.getType()){
             case WATER -> effectivity = 0.5;
@@ -36,6 +44,6 @@ public class FirePokemon extends Pokemon {
             case PLANT -> effectivity = 2.0;
             default -> effectivity = 1.0;
         }
-        oponentPokemon.receiveDamage((attack.getAttackPower() - oponentPokemon.getDefense())*effectivity);
+        oponentPokemon.receiveDamage((Math.abs((attackSelected.get(indexAttackSelected-1).getAttackPower() - oponentPokemon.getDefense())*effectivity)));
     }
 }
