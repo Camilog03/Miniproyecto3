@@ -47,6 +47,6 @@ public class PlantPokemon extends Pokemon {
             case FLYING -> effectivity = 0.5;
             default -> effectivity = 1.0;
         }
-        oponentPokemon.receiveDamage((attackSelected.get(indexAttackSelected-1).getAttackPower() - oponentPokemon.getDefense())*effectivity);;
+        oponentPokemon.receiveDamage((Math.abs((attackSelected.get(indexAttackSelected-1).getAttackPower() - oponentPokemon.getDefense())*effectivity)));;
     }
 }

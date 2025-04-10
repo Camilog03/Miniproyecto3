@@ -46,6 +46,6 @@ public class ElectricPokemon extends Pokemon {
             default -> effectivity = 1.0;
         }
 
-        oponentPokemon.receiveDamage((attackSelected.get(indexAttackSelected-1).getAttackPower() - oponentPokemon.getDefense())*effectivity);
+        oponentPokemon.receiveDamage(Math.abs((attackSelected.get(indexAttackSelected-1).getAttackPower() - oponentPokemon.getDefense())*effectivity));
     }
 }
