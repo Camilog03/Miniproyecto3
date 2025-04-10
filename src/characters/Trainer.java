@@ -1,15 +1,14 @@
 package src.characters;
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
+
 import src.pokemons.*;
 
 
 public class Trainer {
 
     private String trainerName;
-    private static final byte MAX_POKEMONS = 3;
+    private static final byte MAX_POKEMONS = 1;
     private ArrayList<Pokemon> selectPokemonslist = new ArrayList<Pokemon>();
 
 
@@ -75,7 +74,7 @@ public class Trainer {
         for (int i = 0; i < MAX_POKEMONS; i++) {
             selectPokemonslist.add(randomPokemons.get(rand.nextInt(randomPokemons.size())));
             for (int j = 0; j < Pokemon.getMaxAttacks(); j++) {
-                selectPokemonslist.get(selectPokemonslist.size() - 1).selectAttackRandom(rand.nextInt(15)); 
+                selectPokemonslist.get(selectPokemonslist.size() - 1).selectAttackRandom(rand);
                 /* 15 NEED TO BE CHANGED AS AN ATTRIBUTE THAT REPRESENTS
                    THE AMOUNT OF ATTACKS THAT ARE ON THE CLASS */
             }
@@ -83,11 +82,24 @@ public class Trainer {
     }
 
     public void showPokemons() {
-
+        Collections.sort(selectPokemonslist);
         System.out.println("\nPokemones del entrenador " + trainerName + ":");
         for (int i = 0; i < selectPokemonslist.size(); i++) {
             Pokemon pokemon = selectPokemonslist.get(i);
             System.out.println((i + 1) + ". " + pokemon);
+        }
+    }
+
+    public Pokemon selectPokemon(Scanner scanner) {
+        System.out.print("Seleccion de Pokemon (1-3): ");
+        while(true) {
+            int option = scanner.nextInt();
+            if (selectPokemonslist.get(option-1).isAlive() && (option >= 1 && option <= 3)) {
+                return selectPokemonslist.get(option-1);
+            }
+            else{
+                System.out.println("Ingresa una opcion disponible");
+            }
         }
     }
 

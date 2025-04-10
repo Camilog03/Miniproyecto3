@@ -29,7 +29,7 @@ public class Attack {
 
     //toString method to print the object on the console
     @Override
-    public String toString() {return name + " ,Tipo:" + typeOfDamage + ", Potencia: " + attackPower;}
+    public String toString() {return name + " - " + attackPower;}
 
     
 }
