@@ -8,6 +8,7 @@ import src.actions.Attack;
 public class RockPokemon extends Pokemon {
 
     //Constructor and somes attacks to the type of pokemon
+<<<<<<< HEAD
     public RockPokemon(String name, Type type, short hp, short defenseFisic, short defenseSpecial, short speed) {
         super(name, type, hp, defenseFisic, defenseSpecial, speed);
 
@@ -37,11 +38,40 @@ public class RockPokemon extends Pokemon {
         attacksOfClass.add(new Attack("Tormenta de Rocas", Type.ROCK, (short) 85, true));
         attacksOfClass.add(new Attack("Roca Celestial", Type.ROCK, (short) 90, true));
 
+=======
+    public RockPokemon(String name, Type type, double hp, double defense) {
+        super(name, type, hp, defense);
+        attacksOfClass.add(new Attack("Avalancha", Type.ROCK, 50.0));
+        attacksOfClass.add(new Attack("Lanzarrocas", Type.ROCK, 40.0));
+        attacksOfClass.add(new Attack("Roca Afilada", Type.ROCK, 60.0));
+        attacksOfClass.add(new Attack("Pedrada", Type.ROCK, 45.0));
+        attacksOfClass.add(new Attack("Deslizamiento de Rocas", Type.ROCK, 50.0));
+        attacksOfClass.add(new Attack("Trampa Rocas", Type.ROCK, 0.0));
+        attacksOfClass.add(new Attack("Pulso Roca", Type.ROCK, 35.0));
+        attacksOfClass.add(new Attack("Cabeza Roca", Type.ROCK, 55.0));
+        attacksOfClass.add(new Attack("Roca Dura", Type.ROCK, 60.0));
+        attacksOfClass.add(new Attack("Golpe Roca", Type.ROCK, 30.0));
+        attacksOfClass.add(new Attack("Meteorito", Type.ROCK, 65.0));
+        attacksOfClass.add(new Attack("Roca Circular", Type.ROCK, 25.0));
+        attacksOfClass.add(new Attack("Estribillo de Piedra", Type.ROCK, 50.0));
+        attacksOfClass.add(new Attack("Fragmentación", Type.ROCK, 35.0));
+        attacksOfClass.add(new Attack("Muro Roca", Type.ROCK, 0.0));
+>>>>>>> 3081398daf635835d08a3a9c8a12fe1e3994afef
 
     }
 
     @Override
+<<<<<<< HEAD
     public void doAttack(Pokemon oponentPokemon, byte indexAttackSelected) {
+=======
+    public void doAttack(Pokemon oponentPokemon, Scanner scanner) {
+        System.out.println("\t\tAtaques");
+        for (int i = 0; i < MAXATTACKS; i++) {
+            System.out.println((i + 1) + ". " + attackSelected.get(i));
+        }
+
+        int indexAttackSelected = scanner.nextInt();
+>>>>>>> 3081398daf635835d08a3a9c8a12fe1e3994afef
 
         double effectivity;
         switch (oponentPokemon.getType()){
@@ -50,6 +80,7 @@ public class RockPokemon extends Pokemon {
             case GROUND -> effectivity = 0.5;
             default -> effectivity = 1.0;
         }
+<<<<<<< HEAD
         Attack selectedAttack = attacksInstance.get(indexAttackSelected);
 
         double damage;
@@ -61,5 +92,8 @@ public class RockPokemon extends Pokemon {
         }
 
         oponentPokemon.receiveDamage((short)(damage*effectivity));
+=======
+        oponentPokemon.receiveDamage((Math.abs((attackSelected.get(indexAttackSelected-1).getAttackPower() - oponentPokemon.getDefense())*effectivity)));;
+>>>>>>> 3081398daf635835d08a3a9c8a12fe1e3994afef
     }
 }
