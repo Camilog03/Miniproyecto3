@@ -67,6 +67,15 @@ public class Panel1 extends JPanel {
             JOptionPane.showMessageDialog(this, "Debes llenar ambos campos", "Advertencia", JOptionPane.WARNING_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "¡Ambos campos están llenos! Iniciando juego...", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            ((Gui) SwingUtilities.getWindowAncestor(this)).showPanel2();
         }
+    }
+
+    public String getTrainerName1() {
+        return trainerName1.getText();
+    }
+
+    public String getTrainerName2() {
+        return trainerName2.getText();
     }
 }

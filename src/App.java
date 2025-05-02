@@ -1,16 +1,12 @@
 package src;
 
-import src.characters.Trainer;
-import src.pokemons.*;
-import java.util.ArrayList;
+//import src.characters.Trainer;
+//import src.pokemons.*;
+//import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
-<<<<<<< HEAD
     /*public static void main(String[] args) throws Exception {
-=======
-    public static void main(String[] args) throws Exception {
->>>>>>> 3081398daf635835d08a3a9c8a12fe1e3994afef
         Scanner scanner = new Scanner(System.in);
 
         //Intro
@@ -121,11 +117,7 @@ public class App {
                 break;
             }
         }
-<<<<<<< HEAD
     }*/
-=======
-    }
->>>>>>> 3081398daf635835d08a3a9c8a12fe1e3994afef
 }
 
 

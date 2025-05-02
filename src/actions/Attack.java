@@ -21,6 +21,7 @@ public class Attack {
     public boolean isSpecial() {
         return special;
     }
+
     public String getName() {
         return name;
     }

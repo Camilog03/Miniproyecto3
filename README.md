@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 # 🏆 Simulador de Batallas Pokémon - Miniproyecto 2
 
@@ -27,17 +26,11 @@
 
 Este proyecto es un **simulador de batallas Pokémon** desarrollado en **Java**, implementando conceptos de **Programación Orientada a Objetos (POO)** y una **Interfaz Gráfica de Usuario (GUI)**.  
 Permite que dos entrenadores se enfrenten utilizando equipos de Pokémon seleccionados aleatoriamente, siguiendo reglas clásicas de los juegos Pokémon.
-=======
-## 🏆  Miniproyecto 2
-
-Este proyecto es un simulador de batallas Pokémon desarrollado en **Java**, aplicando los principios de **Programación Orientada a Objetos (POO)**. El objetivo es permitir que dos entrenadores Pokémon se enfrenten en un combate utilizando una selección de Pokémon con ataques específicos y aplicando ventajas de tipos.
->>>>>>> 3081398daf635835d08a3a9c8a12fe1e3994afef
 
 ---
 
 ## 🚀 Funcionalidades
 
-<<<<<<< HEAD
 - **Creación de Pokémon** con atributos: HP, Ataque, Defensa, etc.
 - **Definición de ataques** con potencia y tipo de daño (físico/especial).
 - **Entrenadores** con equipos aleatorios de hasta 3 Pokémon.
@@ -69,19 +62,11 @@ Este proyecto es un simulador de batallas Pokémon desarrollado en **Java**, apl
   - **Visualización del estado** de cada batalla.
 - **Estética cuidada** (basada en lo aprendido en clase).
 - *(Bonus)*: Opción de agregar **sprites de Pokémon**.
-=======
-✅ Creación de Pokémon con diferentes tipos y ataques.
-✅ Implementación de entrenadores con equipos personalizados o aleatorios.
-✅ Sistema de turnos basado en los puntos de salud del Pokémon.
-✅ Cálculo de daño con ventajas y desventajas de tipo.
-✅ Interacción mediante la consola con `Scanner`.
->>>>>>> 3081398daf635835d08a3a9c8a12fe1e3994afef
 
 ---
 
 ## 👥 Integrantes
 
-<<<<<<< HEAD
 - 👤 Paula Jimena Bohórquez Bermúdez
 - 👤 Manuela Delgado Aguirre
 - 👤 Juan Camilo Gil Agudelo
@@ -123,26 +108,3 @@ Este proyecto es un simulador de batallas Pokémon desarrollado en **Java**, apl
 ---
 
 # 🎉 ¡Listo para la batalla!
-=======
-👤 **Paula Jimena Bohórquez Bermúdez**
-👤 **Manuela Delgado Aguirre**
-👤 **Juan Camilo Gil Agudelo**
-👤 **Gabriel Esteban Burbano Mora**
-
-📚 Universidad del Valle - Colombia 🇨🇴
-
----
-
-## 📌 Instalación y Uso
-
-1️⃣ Clonar el repositorio:
-
-```bash
-git clone https://github.com/tu_usuario/SimuladorPokemon.git
-```
-
-2️⃣ Abrir el proyecto en **IntelliJ IDEA** o cualquier IDE de Java.
-3️⃣ Ejecutar la clase `App.java` y seguir las instrucciones en consola.
-
----
->>>>>>> 3081398daf635835d08a3a9c8a12fe1e3994afef
