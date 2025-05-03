@@ -29,9 +29,13 @@ public class Panel2 extends JPanel {
         leftPanel.add(trainer1Image, BorderLayout.CENTER);
 
         JPanel leftRadioPanel = new JPanel(new GridLayout(3, 1, 10, 10));
-        radioButton1Left = new JRadioButton("Pikachu");
-        radioButton2Left = new JRadioButton("Charmander");
-        radioButton3Left = new JRadioButton("Squirtle");
+        radioButton1Left = new JRadioButton(gui.getTrainer1().getSelectedPokemon((byte)0).getName());
+        radioButton2Left = new JRadioButton(gui.getTrainer1().getSelectedPokemon((byte)1).getName());
+        radioButton3Left = new JRadioButton(gui.getTrainer1().getSelectedPokemon((byte)2).getName());
+
+        radioButton1Left.setActionCommand("Button1Left");
+        radioButton2Left.setActionCommand("Button2Left");
+        radioButton3Left.setActionCommand("Button3Left");
 
         ButtonGroup leftButtonGroup = new ButtonGroup();
         leftButtonGroup.add(radioButton1Left);
@@ -56,9 +60,13 @@ public class Panel2 extends JPanel {
         rightPanel.add(trainer2Image, BorderLayout.CENTER);
 
         JPanel rightRadioPanel = new JPanel(new GridLayout(3, 1, 10, 10));
-        radioButton1Right = new JRadioButton("Bulbasaur");
-        radioButton2Right = new JRadioButton("Raichu");
-        radioButton3Right = new JRadioButton("Mewtwo");
+        radioButton1Right = new JRadioButton(gui.getTrainer2().getSelectedPokemon((byte)0).getName());
+        radioButton2Right = new JRadioButton(gui.getTrainer2().getSelectedPokemon((byte)1).getName());
+        radioButton3Right = new JRadioButton(gui.getTrainer2().getSelectedPokemon((byte)2).getName());
+
+        radioButton1Right.setActionCommand("Button1Right");
+        radioButton2Right.setActionCommand("Button2Right");
+        radioButton3Right.setActionCommand("Button3Right");
 
         ButtonGroup rightButtonGroup = new ButtonGroup();
         rightButtonGroup.add(radioButton1Right);
@@ -84,13 +92,21 @@ public class Panel2 extends JPanel {
 
         // Acción del botón
         startBattleButton.addActionListener(e -> {
-            String selectedPokemonLeft = getSelectedPokemonLeft();
-            String selectedPokemonRight = getSelectedPokemonRight();
+            byte indexPLeft = -1;
+            byte indexPRight = -1;
 
-            if (selectedPokemonLeft == null || selectedPokemonRight == null) {
+            if (radioButton1Left.isSelected()) indexPLeft = 0;
+            if (radioButton2Left.isSelected()) indexPLeft = 1;
+            if (radioButton3Left.isSelected()) indexPLeft = 2;
+
+            if (radioButton1Right.isSelected()) indexPRight = 0;
+            if (radioButton2Right.isSelected()) indexPRight = 1;
+            if (radioButton3Right.isSelected()) indexPRight = 2;
+
+            if (indexPLeft == -1 || indexPRight == -1) {
                 JOptionPane.showMessageDialog(this, "Debes seleccionar un Pokémon para ambos entrenadores.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             } else {
-                gui.showPanel3(selectedPokemonLeft, selectedPokemonRight);
+                gui.showPanel3(indexPLeft, indexPRight);
             }
         });
     }
@@ -104,18 +120,4 @@ public class Panel2 extends JPanel {
         trainer2Label.setText(name);
     }
 
-    // Métodos para obtener el Pokémon seleccionado
-    private String getSelectedPokemonLeft() {
-        if (radioButton1Left.isSelected()) return "Pikachu";
-        if (radioButton2Left.isSelected()) return "Charmander";
-        if (radioButton3Left.isSelected()) return "Squirtle";
-        return null;
-    }
-
-    private String getSelectedPokemonRight() {
-        if (radioButton1Right.isSelected()) return "Bulbasaur";
-        if (radioButton2Right.isSelected()) return "Raichu";
-        if (radioButton3Right.isSelected()) return "Mewtwo";
-        return null;
-    }
 }

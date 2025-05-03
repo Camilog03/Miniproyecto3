@@ -26,6 +26,10 @@ public class Trainer {
         return selectPokemonslist;
     }
 
+    public Pokemon getSelectedPokemon(byte index) {
+        return selectPokemonslist.get(index);
+    }
+
     public static byte getMaxPokemon() {
         return MAX_POKEMONS;
     }
