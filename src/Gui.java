@@ -53,8 +53,6 @@ public class Gui extends JFrame {
         cardLayout.show(container, "3");
     }
 
-
-
     public Trainer getTrainer1() {
         return trainer1;
     }

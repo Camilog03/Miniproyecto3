@@ -87,6 +87,10 @@ public class Trainer {
         }
     }
 
+    public Pokemon getSelectedPokemon(byte index) {
+        return selectPokemonslist.get(index);
+    }
+
     /* DISABLE FUNCTIONS FOR THE GUI
 
     public void showPokemons() {

@@ -10,6 +10,7 @@ public class Panel2 extends JPanel {
     private JLabel trainer2Label;
     private JRadioButton radioButton1Left, radioButton2Left, radioButton3Left;
     private JRadioButton radioButton1Right, radioButton2Right, radioButton3Right;
+    
 
     public Panel2(Container container, CardLayout cardLayout, Gui gui) {
         this.gui = gui;
@@ -68,6 +69,8 @@ public class Panel2 extends JPanel {
         radioButton2Right.setActionCommand("Button2Right");
         radioButton3Right.setActionCommand("Button3Right");
 
+
+
         ButtonGroup rightButtonGroup = new ButtonGroup();
         rightButtonGroup.add(radioButton1Right);
         rightButtonGroup.add(radioButton2Right);
@@ -109,6 +112,7 @@ public class Panel2 extends JPanel {
                 gui.showPanel3(indexPLeft, indexPRight);
             }
         });
+
     }
 
     // Métodos para configurar los nombres de los entrenadores
@@ -119,5 +123,5 @@ public class Panel2 extends JPanel {
     public void setTrainerName2(String name) {
         trainer2Label.setText(name);
     }
-
+    
 }
