@@ -21,6 +21,8 @@ public class Gui extends JFrame {
 
         trainer1 = new Trainer("");
         trainer2 = new Trainer("");
+        trainer1.randomPokemon();
+        trainer2.randomPokemon();
 
         cardLayout = new CardLayout();
         container = getContentPane();
@@ -43,15 +45,13 @@ public class Gui extends JFrame {
         cardLayout.show(container, "2");
     }
 
-    public void showPanel3(String pokemonLeft, String pokemonRight) {
+    public void showPanel3(byte indexPLeft, byte indexPRight) {
         panel3.setBlueTrainerName(trainer1.getTrainerName());
         panel3.setRedTrainerName(trainer2.getTrainerName());
-        panel3.setBluePokemonName(pokemonLeft);
-        panel3.setRedPokemonName(pokemonRight);
+        panel3.setBluePokemonName(trainer1.getSelectedPokemon(indexPLeft).getName());
+        panel3.setRedPokemonName(trainer2.getSelectedPokemon(indexPRight).getName());
         cardLayout.show(container, "3");
     }
-
-
 
     public Trainer getTrainer1() {
         return trainer1;
