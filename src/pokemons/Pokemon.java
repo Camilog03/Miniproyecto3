@@ -8,6 +8,8 @@ import src.actions.Attack;
 public abstract class Pokemon implements Comparable<Pokemon> {
 
     //Attributes
+    protected short damageMadeIt;
+    private final String path;
     private final String name;
     private final Type type;
     protected static final byte MAXATTACKS = 4;
@@ -17,6 +19,10 @@ public abstract class Pokemon implements Comparable<Pokemon> {
     private short speed;
     private boolean alive = true; //For default, it will always start as true
     protected ArrayList<Attack> attacksOfClass = new ArrayList<Attack>();
+    public ArrayList<Attack> getAttacksInstance() {
+        return attacksInstance;
+    }
+
     protected ArrayList<Attack> attacksInstance = new ArrayList<Attack>(MAXATTACKS);
 
 
@@ -27,22 +33,23 @@ public abstract class Pokemon implements Comparable<Pokemon> {
 
     }
 
-    //Constructor
 
-    public Pokemon(String name, Type type, short hp, short defenseFisic, short defenseSpecial, short speed) {
+    //Constructor
+    public Pokemon(String name, Type type, short hp, short defenseFisic, short defenseSpecial, short speed, String path) {
         this.name = name;
         this.type = type;
         this.hp = hp;
         this.defenseFisic = defenseFisic;
         this.defenseSpecial = defenseSpecial;
         this.speed = speed;
+        this.path = path;
     }
 
     //Setters and Getters
+
     public String getName() {
         return name;
     }
-
     public Type getType() {
         return type;
     }
@@ -83,6 +90,13 @@ public abstract class Pokemon implements Comparable<Pokemon> {
 
     public boolean isAlive() {return alive;}
 
+    public String getPath() {
+        return path;
+    }
+
+    public short getDamageMadeIt() {
+        return damageMadeIt;}
+
     //Other methods
 
     //Attack method that need to be defined on each type of pokemon
@@ -108,6 +122,7 @@ public abstract class Pokemon implements Comparable<Pokemon> {
 
         attacksInstance.add(attacksOfClass.get(indexAttack));
     }
+
 
     /*
         METHODS DISABLE FOR THE GUI

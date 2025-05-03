@@ -8,21 +8,21 @@ import src.actions.Attack;
 public class RockPokemon extends Pokemon {
 
     //Constructor and somes attacks to the type of pokemon
-    public RockPokemon(String name, Type type, short hp, short defenseFisic, short defenseSpecial, short speed) {
-        super(name, type, hp, defenseFisic, defenseSpecial, speed);
+    public RockPokemon(String name, Type type, short hp, short defenseFisic, short defenseSpecial, short speed, String path) {
+        super(name, type, hp, defenseFisic, defenseSpecial, speed, path);
 
         //Add fisic attacks to attacks of class
 
-        attacksOfClass.add(new Attack("Roca Filosa", Type.ROCK, (short) 50, false));
-        attacksOfClass.add(new Attack("Puño Rocoso", Type.ROCK, (short) 55, false));
-        attacksOfClass.add(new Attack("Impacto de Roca", Type.ROCK, (short) 60, false));
-        attacksOfClass.add(new Attack("Tajo de Piedra", Type.ROCK, (short) 65, false));
-        attacksOfClass.add(new Attack("Piedra Lanza", Type.ROCK, (short) 60, false));
-        attacksOfClass.add(new Attack("Golpe Roca", Type.ROCK, (short) 45, false));
-        attacksOfClass.add(new Attack("Desgarro Rocoso", Type.ROCK, (short) 70, false));
-        attacksOfClass.add(new Attack("Embate Rocoso", Type.ROCK, (short) 75, false));
-        attacksOfClass.add(new Attack("Puño de Piedra", Type.ROCK, (short) 65, false));
-        attacksOfClass.add(new Attack("Ataque de Roca", Type.ROCK, (short) 80, false));
+        attacksOfClass.add(new Attack("Roca Filosa", Type.PHYSICAL, (short) 50, false));
+        attacksOfClass.add(new Attack("Puño Rocoso", Type.PHYSICAL, (short) 55, false));
+        attacksOfClass.add(new Attack("Impacto de Roca", Type.PHYSICAL, (short) 60, false));
+        attacksOfClass.add(new Attack("Tajo de Piedra", Type.PHYSICAL, (short) 65, false));
+        attacksOfClass.add(new Attack("Piedra Lanza", Type.PHYSICAL, (short) 60, false));
+        attacksOfClass.add(new Attack("Golpe Roca", Type.PHYSICAL, (short) 45, false));
+        attacksOfClass.add(new Attack("Desgarro Rocoso", Type.PHYSICAL, (short) 70, false));
+        attacksOfClass.add(new Attack("Embate Rocoso", Type.PHYSICAL, (short) 75, false));
+        attacksOfClass.add(new Attack("Puño de Piedra", Type.PHYSICAL, (short) 65, false));
+        attacksOfClass.add(new Attack("Ataque de Roca", Type.PHYSICAL, (short) 80, false));
 
         //Add specials attacks to attacks of class
 
@@ -59,7 +59,7 @@ public class RockPokemon extends Pokemon {
         } else {
             damage = ((selectedAttack.getAttackPower()) / (double) oponentPokemon.getDefenseFisic()) + 2;
         }
-
+        damageMadeIt = (short)(damage*effectivity);
         oponentPokemon.receiveDamage((short)(damage*effectivity));
     }
 }

@@ -9,21 +9,21 @@ public class ElectricPokemon extends Pokemon {
 
 
     //Constructor and somes attacks to the type of pokemon
-    public ElectricPokemon(String name, Type type, short hp, short defenseFisic, short defenseSpecial, short speed) {
-        super(name, type, hp, defenseFisic, defenseSpecial, speed);
+    public ElectricPokemon(String name, Type type, short hp, short defenseFisic, short defenseSpecial, short speed, String path) {
+        super(name, type, hp, defenseFisic, defenseSpecial, speed, path);
 
-        //Add fisic attacks to attacks of class
+        //Add physical attacks to attacks of class
 
-        attacksOfClass.add(new Attack("Puño Eléctrico", Type.ELECTRIC, (short) 50, false));
-        attacksOfClass.add(new Attack("Rayo Corto", Type.ELECTRIC, (short) 45, false));
-        attacksOfClass.add(new Attack("Impacto Voltaje", Type.ELECTRIC, (short) 60, false));
-        attacksOfClass.add(new Attack("Tacleo Eléctrico", Type.ELECTRIC, (short) 40, false));
-        attacksOfClass.add(new Attack("Golpe Relámpago", Type.ELECTRIC, (short) 55, false));
-        attacksOfClass.add(new Attack("Puño Trueno", Type.ELECTRIC, (short) 50, false));
-        attacksOfClass.add(new Attack("Voltio", Type.ELECTRIC, (short) 60, false));
-        attacksOfClass.add(new Attack("Choque Eléctrico", Type.ELECTRIC, (short) 65, false));
-        attacksOfClass.add(new Attack("Estallido Voltaico", Type.ELECTRIC, (short) 70, false));
-        attacksOfClass.add(new Attack("Rayo Impacto", Type.ELECTRIC, (short) 75, false));
+        attacksOfClass.add(new Attack("Puño Eléctrico", Type.PHYSICAL, (short) 50, false));
+        attacksOfClass.add(new Attack("Rayo Corto", Type.PHYSICAL, (short) 45, false));
+        attacksOfClass.add(new Attack("Impacto Voltaje", Type.PHYSICAL, (short) 60, false));
+        attacksOfClass.add(new Attack("Tacleo Eléctrico", Type.PHYSICAL, (short) 40, false));
+        attacksOfClass.add(new Attack("Golpe Relámpago", Type.PHYSICAL, (short) 55, false));
+        attacksOfClass.add(new Attack("Puño Trueno", Type.PHYSICAL, (short) 50, false));
+        attacksOfClass.add(new Attack("Voltio", Type.PHYSICAL, (short) 60, false));
+        attacksOfClass.add(new Attack("Choque Eléctrico", Type.PHYSICAL, (short) 65, false));
+        attacksOfClass.add(new Attack("Estallido Voltaico", Type.PHYSICAL, (short) 70, false));
+        attacksOfClass.add(new Attack("Rayo Impacto", Type.PHYSICAL, (short) 75, false));
 
         //Add specials attacks to attacks of class
 
@@ -57,10 +57,11 @@ public class ElectricPokemon extends Pokemon {
         double damage;
 
         if (selectedAttack.isSpecial()) {
-            damage = ((selectedAttack.getAttackPower()) / (double) oponentPokemon.getDefenseSpecial()) + 2;
+            damage = (selectedAttack.getAttackPower() * 1.5) - (oponentPokemon.getDefenseSpecial() * 0.5);
         } else {
-            damage = ((selectedAttack.getAttackPower()) / (double) oponentPokemon.getDefenseFisic()) + 2;
+            damage = (selectedAttack.getAttackPower() * 1.5) - (oponentPokemon.getDefenseFisic() * 0.5);
         }
+        damage = Math.max(1, damage);
 
         oponentPokemon.receiveDamage((short)(damage*effectivity));
     }

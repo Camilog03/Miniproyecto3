@@ -1,15 +1,14 @@
 package src;
-import src.characters.Trainer;
 
 import java.awt.*;
 import javax.swing.*;
 
 public class Panel2 extends JPanel {
     private Gui gui;
-    private JLabel trainer1Label;
-    private JLabel trainer2Label;
-    private JRadioButton radioButton1Left, radioButton2Left, radioButton3Left;
-    private JRadioButton radioButton1Right, radioButton2Right, radioButton3Right;
+    private JLabel trainerBlueLabel;
+    private JLabel trainerRedLabel;
+    private JRadioButton radioButton1Blue, radioButton2Blue, radioButton3Blue;
+    private JRadioButton radioButton1Red, radioButton2Red, radioButton3Red;
     
 
     public Panel2(Container container, CardLayout cardLayout, Gui gui) {
@@ -19,9 +18,9 @@ public class Panel2 extends JPanel {
 
         // Panel izquierdo
         JPanel leftPanel = new JPanel(new BorderLayout());
-        trainer1Label = new JLabel("", SwingConstants.CENTER); // Nombre del entrenador 1
-        trainer1Label.setFont(new Font("Arial", Font.BOLD, 16));
-        leftPanel.add(trainer1Label, BorderLayout.NORTH);
+        trainerBlueLabel = new JLabel("", SwingConstants.CENTER); // Nombre del entrenador 1
+        trainerBlueLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        leftPanel.add(trainerBlueLabel, BorderLayout.NORTH);
 
         ImageIcon blueTrainerImage = new ImageIcon(new ImageIcon("src/images/blueTrainer.png")
                 .getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
@@ -30,29 +29,34 @@ public class Panel2 extends JPanel {
         leftPanel.add(trainer1Image, BorderLayout.CENTER);
 
         JPanel leftRadioPanel = new JPanel(new GridLayout(3, 1, 10, 10));
-        radioButton1Left = new JRadioButton(gui.getTrainer1().getSelectedPokemon((byte)0).getName());
-        radioButton2Left = new JRadioButton(gui.getTrainer1().getSelectedPokemon((byte)1).getName());
-        radioButton3Left = new JRadioButton(gui.getTrainer1().getSelectedPokemon((byte)2).getName());
+        radioButton1Blue = new JRadioButton(gui.getTrainerBlue().getSelectedPokemon((byte)0).getName());
+        radioButton2Blue = new JRadioButton(gui.getTrainerBlue().getSelectedPokemon((byte)1).getName());
+        radioButton3Blue = new JRadioButton(gui.getTrainerBlue().getSelectedPokemon((byte)2).getName());
 
-        radioButton1Left.setActionCommand("Button1Left");
-        radioButton2Left.setActionCommand("Button2Left");
-        radioButton3Left.setActionCommand("Button3Left");
+        if (!gui.getTrainerBlue().getSelectedPokemon((byte)0).isAlive()) radioButton1Blue.enable(false);
+        if (!gui.getTrainerBlue().getSelectedPokemon((byte)1).isAlive()) radioButton1Blue.enable(false);
+        if (!gui.getTrainerBlue().getSelectedPokemon((byte)2).isAlive()) radioButton1Blue.enable(false);
+
+
+        radioButton1Blue.setActionCommand("Button1Left");
+        radioButton2Blue.setActionCommand("Button2Left");
+        radioButton3Blue.setActionCommand("Button3Left");
 
         ButtonGroup leftButtonGroup = new ButtonGroup();
-        leftButtonGroup.add(radioButton1Left);
-        leftButtonGroup.add(radioButton2Left);
-        leftButtonGroup.add(radioButton3Left);
+        leftButtonGroup.add(radioButton1Blue);
+        leftButtonGroup.add(radioButton2Blue);
+        leftButtonGroup.add(radioButton3Blue);
 
-        leftRadioPanel.add(radioButton1Left);
-        leftRadioPanel.add(radioButton2Left);
-        leftRadioPanel.add(radioButton3Left);
+        leftRadioPanel.add(radioButton1Blue);
+        leftRadioPanel.add(radioButton2Blue);
+        leftRadioPanel.add(radioButton3Blue);
         leftPanel.add(leftRadioPanel, BorderLayout.SOUTH);
 
         // Panel derecho
         JPanel rightPanel = new JPanel(new BorderLayout());
-        trainer2Label = new JLabel("", SwingConstants.CENTER); // Nombre del entrenador 2
-        trainer2Label.setFont(new Font("Arial", Font.BOLD, 16));
-        rightPanel.add(trainer2Label, BorderLayout.NORTH);
+        trainerRedLabel = new JLabel("", SwingConstants.CENTER); // Nombre del entrenador 2
+        trainerRedLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        rightPanel.add(trainerRedLabel, BorderLayout.NORTH);
 
         ImageIcon redTrainerImage = new ImageIcon(new ImageIcon("src/images/redTrainer.png")
                 .getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
@@ -61,24 +65,26 @@ public class Panel2 extends JPanel {
         rightPanel.add(trainer2Image, BorderLayout.CENTER);
 
         JPanel rightRadioPanel = new JPanel(new GridLayout(3, 1, 10, 10));
-        radioButton1Right = new JRadioButton(gui.getTrainer2().getSelectedPokemon((byte)0).getName());
-        radioButton2Right = new JRadioButton(gui.getTrainer2().getSelectedPokemon((byte)1).getName());
-        radioButton3Right = new JRadioButton(gui.getTrainer2().getSelectedPokemon((byte)2).getName());
+        radioButton1Red = new JRadioButton(gui.getTrainerRed().getSelectedPokemon((byte)0).getName());
+        radioButton2Red = new JRadioButton(gui.getTrainerRed().getSelectedPokemon((byte)1).getName());
+        radioButton3Red = new JRadioButton(gui.getTrainerRed().getSelectedPokemon((byte)2).getName());
 
-        radioButton1Right.setActionCommand("Button1Right");
-        radioButton2Right.setActionCommand("Button2Right");
-        radioButton3Right.setActionCommand("Button3Right");
+
+
+        radioButton1Red.setActionCommand("Button1Right");
+        radioButton2Red.setActionCommand("Button2Right");
+        radioButton3Red.setActionCommand("Button3Right");
 
 
 
         ButtonGroup rightButtonGroup = new ButtonGroup();
-        rightButtonGroup.add(radioButton1Right);
-        rightButtonGroup.add(radioButton2Right);
-        rightButtonGroup.add(radioButton3Right);
+        rightButtonGroup.add(radioButton1Red);
+        rightButtonGroup.add(radioButton2Red);
+        rightButtonGroup.add(radioButton3Red);
 
-        rightRadioPanel.add(radioButton1Right);
-        rightRadioPanel.add(radioButton2Right);
-        rightRadioPanel.add(radioButton3Right);
+        rightRadioPanel.add(radioButton1Red);
+        rightRadioPanel.add(radioButton2Red);
+        rightRadioPanel.add(radioButton3Red);
         rightPanel.add(rightRadioPanel, BorderLayout.SOUTH);
 
         // Agregar paneles izquierdo y derecho al centro
@@ -95,33 +101,46 @@ public class Panel2 extends JPanel {
 
         // Acción del botón
         startBattleButton.addActionListener(e -> {
-            byte indexPLeft = -1;
-            byte indexPRight = -1;
+            byte indexPokemonBlue = -1;
+            byte indexPokemonRed = -1;
 
-            if (radioButton1Left.isSelected()) indexPLeft = 0;
-            if (radioButton2Left.isSelected()) indexPLeft = 1;
-            if (radioButton3Left.isSelected()) indexPLeft = 2;
+            if (radioButton1Blue.isSelected()) indexPokemonBlue = 0;
+            if (radioButton2Blue.isSelected()) indexPokemonBlue = 1;
+            if (radioButton3Blue.isSelected()) indexPokemonBlue = 2;
 
-            if (radioButton1Right.isSelected()) indexPRight = 0;
-            if (radioButton2Right.isSelected()) indexPRight = 1;
-            if (radioButton3Right.isSelected()) indexPRight = 2;
+            if (radioButton1Red.isSelected()) indexPokemonRed = 0;
+            if (radioButton2Red.isSelected()) indexPokemonRed = 1;
+            if (radioButton3Red.isSelected()) indexPokemonRed = 2;
 
-            if (indexPLeft == -1 || indexPRight == -1) {
+            if (indexPokemonBlue == -1 || indexPokemonRed == -1) {
                 JOptionPane.showMessageDialog(this, "Debes seleccionar un Pokémon para ambos entrenadores.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             } else {
-                gui.showPanel3(indexPLeft, indexPRight);
+                gui.showPanel3(indexPokemonBlue, indexPokemonRed);
             }
         });
 
     }
 
+    public void updateAlivePokemons() {
+            // Desactivar botones del entrenador azul si el Pokémon no está vivo
+            radioButton1Blue.setEnabled(gui.getTrainerBlue().getSelectedPokemon((byte) 0).isAlive());
+            radioButton2Blue.setEnabled(gui.getTrainerBlue().getSelectedPokemon((byte) 1).isAlive());
+            radioButton3Blue.setEnabled(gui.getTrainerBlue().getSelectedPokemon((byte) 2).isAlive());
+
+            // Desactivar botones del entrenador rojo si el Pokémon no está vivo
+            radioButton1Red.setEnabled(gui.getTrainerRed().getSelectedPokemon((byte) 0).isAlive());
+            radioButton2Red.setEnabled(gui.getTrainerRed().getSelectedPokemon((byte) 1).isAlive());
+            radioButton3Red.setEnabled(gui.getTrainerRed().getSelectedPokemon((byte) 2).isAlive());
+        }
+
+
     // Métodos para configurar los nombres de los entrenadores
     public void setTrainerName1(String name) {
-        trainer1Label.setText(name);
+        trainerBlueLabel.setText(name);
     }
 
     public void setTrainerName2(String name) {
-        trainer2Label.setText(name);
+        trainerRedLabel.setText(name);
     }
     
 }

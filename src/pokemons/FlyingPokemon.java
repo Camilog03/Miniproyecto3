@@ -8,21 +8,21 @@ import src.actions.Attack;
 public class FlyingPokemon extends Pokemon {
 
     //Constructor and somes attacks to the type of pokemon
-    public FlyingPokemon(String name, Type type, short hp, short defenseFisic, short defenseSpecial, short speed) {
-        super(name, type, hp, defenseFisic, defenseSpecial, speed);
+    public FlyingPokemon(String name, Type type, short hp, short defenseFisic, short defenseSpecial, short speed, String path) {
+        super(name, type, hp, defenseFisic, defenseSpecial, speed, path);
 
         //Add fisic attacks to attacks of class
 
-        attacksOfClass.add(new Attack("Puño Volador", Type.FLYING, (short) 50, false));
-        attacksOfClass.add(new Attack("Bajo Vuelo", Type.FLYING, (short) 55, false));
-        attacksOfClass.add(new Attack("Golpe Áereo", Type.FLYING, (short) 60, false));
-        attacksOfClass.add(new Attack("Garras Aéreas", Type.FLYING, (short) 45, false));
-        attacksOfClass.add(new Attack("Impacto de Alas", Type.FLYING, (short) 50, false));
-        attacksOfClass.add(new Attack("Vuelo Cortante", Type.FLYING, (short) 60, false));
-        attacksOfClass.add(new Attack("Ataque de Pluma", Type.FLYING, (short) 50, false));
-        attacksOfClass.add(new Attack("Alas Asesinas", Type.FLYING, (short) 70, false));
-        attacksOfClass.add(new Attack("Giro Aéreo", Type.FLYING, (short) 55, false));
-        attacksOfClass.add(new Attack("Puño Aéreo", Type.FLYING, (short) 65, false));
+        attacksOfClass.add(new Attack("Puño Volador", Type.PHYSICAL, (short) 50, false));
+        attacksOfClass.add(new Attack("Bajo Vuelo", Type.PHYSICAL, (short) 55, false));
+        attacksOfClass.add(new Attack("Golpe Áereo", Type.PHYSICAL, (short) 60, false));
+        attacksOfClass.add(new Attack("Garras Aéreas", Type.PHYSICAL, (short) 45, false));
+        attacksOfClass.add(new Attack("Impacto de Alas", Type.PHYSICAL, (short) 50, false));
+        attacksOfClass.add(new Attack("Vuelo Cortante", Type.PHYSICAL, (short) 60, false));
+        attacksOfClass.add(new Attack("Ataque de Pluma", Type.PHYSICAL, (short) 50, false));
+        attacksOfClass.add(new Attack("Alas Asesinas", Type.PHYSICAL, (short) 70, false));
+        attacksOfClass.add(new Attack("Giro Aéreo", Type.PHYSICAL, (short) 55, false));
+        attacksOfClass.add(new Attack("Puño Aéreo", Type.PHYSICAL, (short) 65, false));
 
         //Add specials attacks to attacks of class
 
@@ -58,7 +58,7 @@ public class FlyingPokemon extends Pokemon {
         } else {
             damage = ((selectedAttack.getAttackPower()) / (double) oponentPokemon.getDefenseFisic()) + 2;
         }
-
+        damageMadeIt = (short)(damage*effectivity);
         oponentPokemon.receiveDamage((short)(damage*effectivity));
     }
 }

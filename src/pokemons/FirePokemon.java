@@ -8,21 +8,21 @@ import src.actions.Attack;
 public class FirePokemon extends Pokemon {
 
     //Constructor and somes attacks to the type of pokemon
-    public FirePokemon(String name, Type type, short hp, short defenseFisic, short defenseSpecial, short speed) {
-        super(name, type, hp, defenseFisic, defenseSpecial, speed);
+    public FirePokemon(String name, Type type, short hp, short defenseFisic, short defenseSpecial, short speed, String path) {
+        super(name, type, hp, defenseFisic, defenseSpecial, speed, path);
 
         //Add fisic attacks to attacks of class
 
-        attacksOfClass.add(new Attack("Lanzallamas", Type.FIRE, (short) 60, false));
-        attacksOfClass.add(new Attack("Golpe Ígneo", Type.FIRE, (short) 45, false));
-        attacksOfClass.add(new Attack("Placaje de Fuego", Type.FIRE, (short) 40, false));
-        attacksOfClass.add(new Attack("Tacleo Llamas", Type.FIRE, (short) 35, false));
-        attacksOfClass.add(new Attack("Puño Fuego", Type.FIRE, (short) 50, false));
-        attacksOfClass.add(new Attack("Bola de Fuego", Type.FIRE, (short) 55, false));
-        attacksOfClass.add(new Attack("Impacto Llama", Type.FIRE, (short) 65, false));
-        attacksOfClass.add(new Attack("Rugido Infernal", Type.FIRE, (short) 40, false));
-        attacksOfClass.add(new Attack("Ataque Calor", Type.FIRE, (short) 50, false));
-        attacksOfClass.add(new Attack("Garras Ardientes", Type.FIRE, (short) 45, false));
+        attacksOfClass.add(new Attack("Lanzallamas", Type.PHYSICAL, (short) 60, false));
+        attacksOfClass.add(new Attack("Golpe Ígneo", Type.PHYSICAL, (short) 45, false));
+        attacksOfClass.add(new Attack("Placaje de Fuego", Type.PHYSICAL, (short) 40, false));
+        attacksOfClass.add(new Attack("Tacleo Llamas", Type.PHYSICAL, (short) 35, false));
+        attacksOfClass.add(new Attack("Puño Fuego", Type.PHYSICAL, (short) 50, false));
+        attacksOfClass.add(new Attack("Bola de Fuego", Type.PHYSICAL, (short) 55, false));
+        attacksOfClass.add(new Attack("Impacto Llama", Type.PHYSICAL, (short) 65, false));
+        attacksOfClass.add(new Attack("Rugido Infernal", Type.PHYSICAL, (short) 40, false));
+        attacksOfClass.add(new Attack("Ataque Calor", Type.PHYSICAL, (short) 50, false));
+        attacksOfClass.add(new Attack("Garras Ardientes", Type.PHYSICAL, (short) 45, false));
 
         //Add specials attacks to attacks of class
 
@@ -61,7 +61,7 @@ public class FirePokemon extends Pokemon {
         } else {
             damage = ((selectedAttack.getAttackPower()) / (double) oponentPokemon.getDefenseFisic()) + 2;
         }
-
+        damageMadeIt = (short)(damage*effectivity);
         oponentPokemon.receiveDamage((short)(damage*effectivity));
     }
 }

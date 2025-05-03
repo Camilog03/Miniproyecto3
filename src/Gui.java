@@ -1,14 +1,15 @@
 package src;
 
 import src.characters.Trainer;
+import src.pokemons.Pokemon;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class Gui extends JFrame {
 
-    private Trainer trainer1;
-    private Trainer trainer2;
+    private Trainer trainerBlue;
+    private Trainer trainerRed;
     private Container container;
     private CardLayout cardLayout;
     private Panel1 panel1;
@@ -19,10 +20,10 @@ public class Gui extends JFrame {
         setSize(800,500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        trainer1 = new Trainer("");
-        trainer2 = new Trainer("");
-        trainer1.randomPokemon();
-        trainer2.randomPokemon();
+        trainerBlue = new Trainer("");
+        trainerRed = new Trainer("");
+        trainerBlue.randomPokemon();
+        trainerRed.randomPokemon();
 
         cardLayout = new CardLayout();
         container = getContentPane();
@@ -40,37 +41,69 @@ public class Gui extends JFrame {
     }
 
     public void showPanel2() {
-        panel2.setTrainerName1(trainer1.getTrainerName());
-        panel2.setTrainerName2(trainer2.getTrainerName());
+        panel2.setTrainerName1(trainerBlue.getTrainerName());
+        panel2.setTrainerName2(trainerRed.getTrainerName());
+        panel2.updateAlivePokemons();
+        byte counterBlue = 0;
+        byte counterRed = 0;
+        for(Pokemon po:trainerBlue.getSelectPokemonslist()){
+            if(!po.isAlive()){
+                counterBlue++;
+            }
+        }
+        for(Pokemon po:trainerRed.getSelectPokemonslist()){
+            if(!po.isAlive()){
+                counterRed++;
+            }
+        }
+        if(counterBlue == 3 || counterRed == 3){
+            JOptionPane.showMessageDialog(this, "Gana el entrenador "+ (counterBlue==3?"Rojo: "+trainerRed.getTrainerName():"Azul: "+trainerBlue.getTrainerName()) +
+                    "\nFelicidades!!!!!!"+
+                    "\nEl juego a FINALIZADO...");
+            System.exit(0);
+        }
+
+
         cardLayout.show(container, "2");
     }
 
-    public void showPanel3(byte indexPLeft, byte indexPRight) {
-        panel3.setBlueTrainerName(trainer1.getTrainerName());
-        panel3.setRedTrainerName(trainer2.getTrainerName());
-        panel3.setBluePokemonName(trainer1.getSelectedPokemon(indexPLeft).getName());
-        panel3.setRedPokemonName(trainer2.getSelectedPokemon(indexPRight).getName());
+    public void showPanel3(byte indexPokemonBlue, byte indexPokemonRed) {
+        JOptionPane.showMessageDialog(this, "Inicia el " + (trainerBlue.getSelectedPokemon(indexPokemonBlue).getSpeed() > trainerRed.getSelectedPokemon(indexPokemonRed).getSpeed()? "Entrenador Azul":"Entrenador Rojo"));
+        System.out.println(trainerBlue.getSelectedPokemon(indexPokemonBlue).getSpeed() + " " + trainerRed.getSelectedPokemon(indexPokemonRed).getSpeed());
+        panel3.setIndexPokemonBlue(indexPokemonBlue);
+        panel3.setIndexPokemonRed(indexPokemonRed);
+        panel3.setBlueTrainerName(trainerBlue.getTrainerName());
+        panel3.setRedTrainerName(trainerRed.getTrainerName());
+        panel3.setBluePokemonName(trainerBlue.getSelectedPokemon(indexPokemonBlue).getName());
+        panel3.setRedPokemonName(trainerRed.getSelectedPokemon(indexPokemonRed).getName());
+        panel3.updateHpLabels();
+        ImageIcon bluePokemonImageIcon = new ImageIcon(new ImageIcon(trainerBlue.getSelectedPokemon(indexPokemonBlue).getPath())
+                .getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
+        ImageIcon redPokemonImageIcon = new ImageIcon(new ImageIcon(trainerRed.getSelectedPokemon(indexPokemonRed).getPath())
+                .getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
+        panel3.setBluePokemonImage(bluePokemonImageIcon);
+        panel3.setRedPokemonImage(redPokemonImageIcon);
+
         cardLayout.show(container, "3");
     }
 
-    public Trainer getTrainer1() {
-        return trainer1;
+    public Trainer getTrainerBlue() {
+        return trainerBlue;
     }
 
-    public void setTrainer1(Trainer trainer1) {
-        this.trainer1 = trainer1;
+    public void setTrainerBlue(Trainer trainerBlue) {
+        this.trainerBlue = trainerBlue;
     }
 
-    public Trainer getTrainer2() {
-        return trainer2;
+    public Trainer getTrainerRed() {
+        return trainerRed;
     }
 
-    public void setTrainer2(Trainer trainer2) {
-        this.trainer2 = trainer2;
+    public void setTrainerRed(Trainer trainerRed) {
+        this.trainerRed = trainerRed;
     }
 
-    public static void main(String[] args) {
-        new Gui(); // Crear y mostrar la ventana principal
-    }
+    public Panel2 getPanel2(){
+        return panel2;}
 
 }

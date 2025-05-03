@@ -36,7 +36,7 @@ public class Attack {
 
     //toString method to print the object on the console
     @Override
-    public String toString() {return name + " - " + attackPower;}
+    public String toString() {return name + " - DAM: " + attackPower + " - " + (special ? " - " + typeOfDamage : "BASICO");}
 }
 
 

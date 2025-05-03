@@ -8,21 +8,21 @@ import src.actions.Attack;
 public class WaterPokemon extends Pokemon {
 
     //Constructor and somes attacks to the type of pokemon
-    public WaterPokemon(String name, Type type, short hp, short defenseFisic, short defenseSpecial, short speed) {
-        super(name, type, hp, defenseFisic, defenseSpecial, speed);
+    public WaterPokemon(String name, Type type, short hp, short defenseFisic, short defenseSpecial, short speed, String path) {
+        super(name, type, hp, defenseFisic, defenseSpecial, speed, path);
 
         //Add fisic attacks to attacks of class
 
-        attacksOfClass.add(new Attack("Chorro de Agua", Type.WATER, (short) 40, false));
-        attacksOfClass.add(new Attack("Puño Acuático", Type.WATER, (short) 45, false));
-        attacksOfClass.add(new Attack("Impacto Marítimo", Type.WATER, (short) 50, false));
-        attacksOfClass.add(new Attack("Tacleo Acuático", Type.WATER, (short) 35, false));
-        attacksOfClass.add(new Attack("Tornado Acuático", Type.WATER, (short) 55, false));
-        attacksOfClass.add(new Attack("Pisotón Submarino", Type.WATER, (short) 50, false));
-        attacksOfClass.add(new Attack("Garras de Agua", Type.WATER, (short) 45, false));
-        attacksOfClass.add(new Attack("Tajo Acuático", Type.WATER, (short) 60, false));
-        attacksOfClass.add(new Attack("Fuerza del Mar", Type.WATER, (short) 55, false));
-        attacksOfClass.add(new Attack("Golpe Marítimo", Type.WATER, (short) 50, false));
+        attacksOfClass.add(new Attack("Chorro de Agua", Type.PHYSICAL, (short) 40, false));
+        attacksOfClass.add(new Attack("Puño Acuático", Type.PHYSICAL, (short) 45, false));
+        attacksOfClass.add(new Attack("Impacto Marítimo", Type.PHYSICAL, (short) 50, false));
+        attacksOfClass.add(new Attack("Tacleo Acuático", Type.PHYSICAL, (short) 35, false));
+        attacksOfClass.add(new Attack("Tornado Acuático", Type.PHYSICAL, (short) 55, false));
+        attacksOfClass.add(new Attack("Pisotón Submarino", Type.PHYSICAL, (short) 50, false));
+        attacksOfClass.add(new Attack("Garras de Agua", Type.PHYSICAL, (short) 45, false));
+        attacksOfClass.add(new Attack("Tajo Acuático", Type.PHYSICAL, (short) 60, false));
+        attacksOfClass.add(new Attack("Fuerza del Mar", Type.PHYSICAL, (short) 55, false));
+        attacksOfClass.add(new Attack("Golpe Marítimo", Type.PHYSICAL, (short) 50, false));
 
 
         //Add specials attacks to attacks of class
@@ -60,7 +60,7 @@ public class WaterPokemon extends Pokemon {
         } else {
             damage = ((selectedAttack.getAttackPower()) / (double) oponentPokemon.getDefenseFisic()) + 2;
         }
-
+        damageMadeIt = (short)(damage*effectivity);
         oponentPokemon.receiveDamage((short)(damage*effectivity));
     }
 }

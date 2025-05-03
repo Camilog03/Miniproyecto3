@@ -1,5 +1,4 @@
 package src;
-import src.characters.Trainer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -35,7 +34,7 @@ public class Panel1 extends JPanel {
                 .getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
         JLabel trainer1Image = new JLabel(blueTrainerImage);
         trainer1Image.setHorizontalAlignment(SwingConstants.CENTER);
-        trainerLabel1 = new JLabel("Trainer 1 Name:");
+        trainerLabel1 = new JLabel("Entrenador Rojo:");
         trainerLabel1.setHorizontalAlignment(SwingConstants.CENTER);
         trainerName1 = new JTextField(5);
         leftPanel.add(trainer1Image, BorderLayout.NORTH);
@@ -47,7 +46,7 @@ public class Panel1 extends JPanel {
                 .getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
         JLabel trainer2Image = new JLabel(redTrainerImage);
         trainer2Image.setHorizontalAlignment(SwingConstants.CENTER);
-        trainerLabel2 = new JLabel("Trainer 2 Name:");
+        trainerLabel2 = new JLabel("Entrenador Azul:");
         trainerLabel2.setHorizontalAlignment(SwingConstants.CENTER);
         trainerName2 = new JTextField(5);
         rightPanel.add(trainer2Image, BorderLayout.NORTH);
@@ -72,8 +71,8 @@ public class Panel1 extends JPanel {
             JOptionPane.showMessageDialog(this, "Debes llenar ambos campos", "Advertencia", JOptionPane.WARNING_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "¡Ambos campos están llenos! Iniciando juego...", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-            gui.getTrainer1().setTrainerName(trainerName1.getText());
-            gui.getTrainer2().setTrainerName(trainerName2.getText());
+            gui.getTrainerBlue().setTrainerName(trainerName1.getText());
+            gui.getTrainerRed().setTrainerName(trainerName2.getText());
             ((Gui) SwingUtilities.getWindowAncestor(this)).showPanel2();
         }
 

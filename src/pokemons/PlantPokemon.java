@@ -8,22 +8,21 @@ import src.actions.Attack;
 public class PlantPokemon extends Pokemon {
 
     //Constructor and somes attacks to the type of pokemon
-    public PlantPokemon(String name, Type type, short hp, short defenseFisic, short defenseSpecial, short speed) {
-
-        super(name, type, hp, defenseFisic, defenseSpecial, speed);
+    public PlantPokemon(String name, Type type, short hp, short defenseFisic, short defenseSpecial, short speed, String path) {
+        super(name, type, hp, defenseFisic, defenseSpecial, speed, path);
 
         //Add fisic attacks to attacks of class
 
-        attacksOfClass.add(new Attack("Latigazo", Type.PLANT, (short) 35, false));
-        attacksOfClass.add(new Attack("Hoja Afilada", Type.PLANT, (short) 45, false));
-        attacksOfClass.add(new Attack("Látigo Cepa", Type.PLANT, (short) 30, false));
-        attacksOfClass.add(new Attack("Fitoimpulso", Type.PLANT, (short) 45, false));
-        attacksOfClass.add(new Attack("Hoja Aguda", Type.PLANT, (short) 50, false));
-        attacksOfClass.add(new Attack("Embate Verde", Type.PLANT, (short) 40, false));
-        attacksOfClass.add(new Attack("Puya Espinosa", Type.PLANT, (short) 35, false));
-        attacksOfClass.add(new Attack("Tacleo Floral", Type.PLANT, (short) 25, false));
-        attacksOfClass.add(new Attack("Corte Hoja", Type.PLANT, (short) 40, false));
-        attacksOfClass.add(new Attack("Ira Botánica", Type.PLANT, (short) 55, false));
+        attacksOfClass.add(new Attack("Latigazo", Type.PHYSICAL, (short) 35, false));
+        attacksOfClass.add(new Attack("Hoja Afilada", Type.PHYSICAL, (short) 45, false));
+        attacksOfClass.add(new Attack("Látigo Cepa", Type.PHYSICAL, (short) 30, false));
+        attacksOfClass.add(new Attack("Fitoimpulso", Type.PHYSICAL, (short) 45, false));
+        attacksOfClass.add(new Attack("Hoja Aguda", Type.PHYSICAL, (short) 50, false));
+        attacksOfClass.add(new Attack("Embate Verde", Type.PHYSICAL, (short) 40, false));
+        attacksOfClass.add(new Attack("Puya Espinosa", Type.PHYSICAL, (short) 35, false));
+        attacksOfClass.add(new Attack("Tacleo Floral", Type.PHYSICAL, (short) 25, false));
+        attacksOfClass.add(new Attack("Corte Hoja", Type.PHYSICAL, (short) 40, false));
+        attacksOfClass.add(new Attack("Ira Botánica", Type.PHYSICAL, (short) 55, false));
 
         //Add specials attacks to attacks of class
 
@@ -64,7 +63,7 @@ public class PlantPokemon extends Pokemon {
         } else {
             damage = ((selectedAttack.getAttackPower()) / (double) oponentPokemon.getDefenseFisic()) + 2;
         }
-
+        damageMadeIt = (short)(damage*effectivity);
         oponentPokemon.receiveDamage((short)(damage*effectivity));
     }
 }
