@@ -8,8 +8,12 @@ public class Panel3 extends JPanel {
     private JLabel redTrainerLabel;
     private JLabel bluePokemonLabel;
     private JLabel redPokemonLabel;
+    private Gui gui;
 
-    public Panel3(Container container, CardLayout cardLayout) {
+
+    public Panel3(Container container, CardLayout cardLayout, Gui gui) {
+        this.gui = gui;
+
         setLayout(new BorderLayout());
         setBackground(new Color(0xA0C8F0));
 

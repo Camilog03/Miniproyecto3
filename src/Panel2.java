@@ -1,14 +1,19 @@
 package src;
+import src.characters.Trainer;
+
 import java.awt.*;
 import javax.swing.*;
 
 public class Panel2 extends JPanel {
+    private Gui gui;
     private JLabel trainer1Label;
     private JLabel trainer2Label;
     private JRadioButton radioButton1Left, radioButton2Left, radioButton3Left;
     private JRadioButton radioButton1Right, radioButton2Right, radioButton3Right;
 
-    public Panel2(Container container, CardLayout cardLayout) {
+    public Panel2(Container container, CardLayout cardLayout, Gui gui) {
+        this.gui = gui;
+
         setLayout(new BorderLayout());
 
         // Panel izquierdo
@@ -85,7 +90,6 @@ public class Panel2 extends JPanel {
             if (selectedPokemonLeft == null || selectedPokemonRight == null) {
                 JOptionPane.showMessageDialog(this, "Debes seleccionar un Pokémon para ambos entrenadores.", "Advertencia", JOptionPane.WARNING_MESSAGE);
             } else {
-                Gui gui = (Gui) SwingUtilities.getWindowAncestor(this);
                 gui.showPanel3(selectedPokemonLeft, selectedPokemonRight);
             }
         });

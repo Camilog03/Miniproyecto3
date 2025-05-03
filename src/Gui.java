@@ -1,27 +1,34 @@
 package src;
 
+import src.characters.Trainer;
+
 import javax.swing.*;
 import java.awt.*;
 
 public class Gui extends JFrame {
+
+    private Trainer trainer1;
+    private Trainer trainer2;
     private Container container;
     private CardLayout cardLayout;
     private Panel1 panel1;
     private Panel2 panel2;
     private Panel3 panel3;
-
     public Gui(){
         setTitle("BATALLA POKEMON");
         setSize(800,500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        trainer1 = new Trainer("");
+        trainer2 = new Trainer("");
+
         cardLayout = new CardLayout();
         container = getContentPane();
         container.setLayout(cardLayout);
 
-        panel1 = new Panel1(container, cardLayout);
-        panel2 = new Panel2(container, cardLayout);
-        panel3 = new Panel3(container, cardLayout);
+        panel1 = new Panel1(container, cardLayout, this);
+        panel2 = new Panel2(container, cardLayout, this);
+        panel3 = new Panel3(container, cardLayout, this);
 
         container.add(panel1, "1");
         container.add(panel2, "2");
@@ -31,21 +38,35 @@ public class Gui extends JFrame {
     }
 
     public void showPanel2() {
-        String trainerName1 = panel1.getTrainerName1();
-        String trainerName2 = panel1.getTrainerName2();
-        panel2.setTrainerName1(trainerName1);
-        panel2.setTrainerName2(trainerName2);
+        panel2.setTrainerName1(trainer1.getTrainerName());
+        panel2.setTrainerName2(trainer2.getTrainerName());
         cardLayout.show(container, "2");
     }
 
     public void showPanel3(String pokemonLeft, String pokemonRight) {
-        String trainerName1 = panel1.getTrainerName1();
-        String trainerName2 = panel1.getTrainerName2();
-        panel3.setBlueTrainerName(trainerName1);
-        panel3.setRedTrainerName(trainerName2);
+        panel3.setBlueTrainerName(trainer1.getTrainerName());
+        panel3.setRedTrainerName(trainer2.getTrainerName());
         panel3.setBluePokemonName(pokemonLeft);
         panel3.setRedPokemonName(pokemonRight);
         cardLayout.show(container, "3");
+    }
+
+
+
+    public Trainer getTrainer1() {
+        return trainer1;
+    }
+
+    public void setTrainer1(Trainer trainer1) {
+        this.trainer1 = trainer1;
+    }
+
+    public Trainer getTrainer2() {
+        return trainer2;
+    }
+
+    public void setTrainer2(Trainer trainer2) {
+        this.trainer2 = trainer2;
     }
 
     public static void main(String[] args) {

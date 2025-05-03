@@ -1,9 +1,13 @@
 package src;
+import src.characters.Trainer;
+
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.border.EmptyBorder;
 
 public class Panel1 extends JPanel {
+
+    private Gui gui;
     private Container container;
     private CardLayout cardLayout;
     private JLabel trainerLabel1, trainerLabel2, titleLabel;
@@ -11,9 +15,10 @@ public class Panel1 extends JPanel {
     private JButton startButton;
     private ImageIcon blueTrainerImage, redTrainerImage, titleImage;
 
-    public Panel1(Container container, CardLayout cardLayout) {
+    public Panel1(Container container, CardLayout cardLayout, Gui gui) {
         this.container = container;
         this.cardLayout = cardLayout;
+        this.gui = gui;
 
         setLayout(new BorderLayout());
 
@@ -67,15 +72,10 @@ public class Panel1 extends JPanel {
             JOptionPane.showMessageDialog(this, "Debes llenar ambos campos", "Advertencia", JOptionPane.WARNING_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(this, "¡Ambos campos están llenos! Iniciando juego...", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            gui.getTrainer1().setTrainerName(trainerName1.getText());
+            gui.getTrainer2().setTrainerName(trainerName2.getText());
             ((Gui) SwingUtilities.getWindowAncestor(this)).showPanel2();
         }
-    }
 
-    public String getTrainerName1() {
-        return trainerName1.getText();
-    }
-
-    public String getTrainerName2() {
-        return trainerName2.getText();
     }
 }
