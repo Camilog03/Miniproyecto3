@@ -59,7 +59,7 @@ public class Gui extends JFrame {
         if(counterBlue == 3 || counterRed == 3){
             JOptionPane.showMessageDialog(this, "Gana el entrenador "+ (counterBlue==3?"Rojo: "+trainerRed.getTrainerName():"Azul: "+trainerBlue.getTrainerName()) +
                     "\nFelicidades!!!!!!"+
-                    "\nEl juego a FINALIZADO...");
+                    "\nEl juego ha FINALIZADO...");
             System.exit(0);
         }
 
@@ -70,8 +70,7 @@ public class Gui extends JFrame {
     public void showPanel3(byte indexPokemonBlue, byte indexPokemonRed) {
         JOptionPane.showMessageDialog(this, "Inicia el " + (trainerBlue.getSelectedPokemon(indexPokemonBlue).getSpeed() > trainerRed.getSelectedPokemon(indexPokemonRed).getSpeed()? "Entrenador Azul":"Entrenador Rojo"));
         System.out.println(trainerBlue.getSelectedPokemon(indexPokemonBlue).getSpeed() + " " + trainerRed.getSelectedPokemon(indexPokemonRed).getSpeed());
-        panel3.setIndexPokemonBlue(indexPokemonBlue);
-        panel3.setIndexPokemonRed(indexPokemonRed);
+        panel3.setPokemonIndexes(indexPokemonBlue, indexPokemonRed);
         panel3.setBlueTrainerName(trainerBlue.getTrainerName());
         panel3.setRedTrainerName(trainerRed.getTrainerName());
         panel3.setBluePokemonName(trainerBlue.getSelectedPokemon(indexPokemonBlue).getName());

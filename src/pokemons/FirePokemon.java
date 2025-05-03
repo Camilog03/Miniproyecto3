@@ -61,7 +61,7 @@ public class FirePokemon extends Pokemon {
         } else {
             damage = ((selectedAttack.getAttackPower()) / (double) oponentPokemon.getDefenseFisic()) + 2;
         }
-        damageMadeIt = (short)(damage*effectivity);
-        oponentPokemon.receiveDamage((short)(damage*effectivity));
+        damageMadeIt = (short)Math.round(damage*effectivity);
+        oponentPokemon.receiveDamage(damageMadeIt);
     }
 }

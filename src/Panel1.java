@@ -28,25 +28,25 @@ public class Panel1 extends JPanel {
         add(titleLabel, BorderLayout.NORTH);
 
         JPanel centerPanel = new JPanel(new GridLayout(1, 2, 20, 0)); 
-
+        //Campo e imagen para entrenador azul
         JPanel leftPanel = new JPanel(new BorderLayout());
         blueTrainerImage = new ImageIcon(new ImageIcon("src/images/blueTrainer.png")
                 .getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
         JLabel trainer1Image = new JLabel(blueTrainerImage);
         trainer1Image.setHorizontalAlignment(SwingConstants.CENTER);
-        trainerLabel1 = new JLabel("Entrenador Rojo:");
+        trainerLabel1 = new JLabel("Entrenador Azul:");
         trainerLabel1.setHorizontalAlignment(SwingConstants.CENTER);
         trainerName1 = new JTextField(5);
         leftPanel.add(trainer1Image, BorderLayout.NORTH);
         leftPanel.add(trainerLabel1, BorderLayout.CENTER);
         leftPanel.add(trainerName1, BorderLayout.SOUTH);
-
+        //Campo e imagen para entrenador azul
         JPanel rightPanel = new JPanel(new BorderLayout());
         redTrainerImage = new ImageIcon(new ImageIcon("src/images/redTrainer.png")
                 .getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH));
         JLabel trainer2Image = new JLabel(redTrainerImage);
         trainer2Image.setHorizontalAlignment(SwingConstants.CENTER);
-        trainerLabel2 = new JLabel("Entrenador Azul:");
+        trainerLabel2 = new JLabel("Entrenador Rojo:");
         trainerLabel2.setHorizontalAlignment(SwingConstants.CENTER);
         trainerName2 = new JTextField(5);
         rightPanel.add(trainer2Image, BorderLayout.NORTH);
@@ -65,7 +65,7 @@ public class Panel1 extends JPanel {
 
         startButton.addActionListener(e -> checkTextFields());
     }
-
+    //Comprobación de los campos llenos
     private void checkTextFields() {
         if (trainerName1.getText().isEmpty() || trainerName2.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Debes llenar ambos campos", "Advertencia", JOptionPane.WARNING_MESSAGE);

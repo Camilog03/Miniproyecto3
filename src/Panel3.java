@@ -17,9 +17,6 @@ public class Panel3 extends JPanel implements ActionListener {
     public Panel3(Container container, CardLayout cardLayout, Gui gui) {
         this.gui = gui;
 
-        isBlueTurn = gui.getTrainerBlue().getSelectedPokemon(indexPokemonBlue).getSpeed()
-                > gui.getTrainerRed().getSelectedPokemon(indexPokemonRed).getSpeed();
-
         setLayout(new BorderLayout());
         setBackground(new Color(0x8FB5DE));
 
@@ -103,6 +100,7 @@ public class Panel3 extends JPanel implements ActionListener {
 
         updateButtonStates();
 
+        // Listeners para los clics en botones de ataque
         attack1Blue.addActionListener(this);
         attack2Blue.addActionListener(this);
         attack3Blue.addActionListener(this);
@@ -111,6 +109,7 @@ public class Panel3 extends JPanel implements ActionListener {
         attack3Red.addActionListener(this);
     }
 
+    // Habilita o deshabilita los botones según el turno
     private void updateButtonStates() {
 
         attack1Blue.setEnabled(isBlueTurn);
@@ -122,6 +121,7 @@ public class Panel3 extends JPanel implements ActionListener {
         attack3Red.setEnabled(!isBlueTurn);
     }
 
+    // Maneja los clics en botones de ataque
     @Override
     public void actionPerformed(ActionEvent e) {
         if (isBlueTurn) {
@@ -148,6 +148,7 @@ public class Panel3 extends JPanel implements ActionListener {
 
         updateHpLabels();
 
+        // Verificar si alguno de los Pokemon fue derrotado
         if (!gui.getTrainerBlue().getSelectedPokemon(indexPokemonBlue).isAlive() ||
                 !gui.getTrainerRed().getSelectedPokemon(indexPokemonRed).isAlive()) {
             String deadPokemon = gui.getTrainerBlue().getSelectedPokemon(indexPokemonBlue).isAlive()
@@ -157,16 +158,29 @@ public class Panel3 extends JPanel implements ActionListener {
             gui.showPanel2();
             return;
         }
-
+        
         isBlueTurn = !isBlueTurn;
         updateButtonStates();
     }
-
+    //Metodo para actualizar indices y determinar quien empieza
+    public void setPokemonIndexes(byte indexPokemonBlue, byte indexPokemonRed) {
+        this.indexPokemonBlue = indexPokemonBlue;
+        this.indexPokemonRed = indexPokemonRed;
+    
+        isBlueTurn = gui.getTrainerBlue().getSelectedPokemon(indexPokemonBlue).getSpeed()
+                > gui.getTrainerRed().getSelectedPokemon(indexPokemonRed).getSpeed();
+    
+        updateButtonStates();
+        updateHpLabels();
+    }
+    
+    //Actualiza HP con los valores actuales
     public void updateHpLabels(){
         redPokemonHpLabel.setText("HP = " + gui.getTrainerRed().getSelectedPokemon(indexPokemonRed).getHp());
         bluePokemonHpLabel.setText("HP = " + gui.getTrainerBlue().getSelectedPokemon(indexPokemonBlue).getHp());
     }
 
+    // Setters para actualizar nombres e imágenes
     public void setBluePokemonImage(ImageIcon bluePokemonImage) {
         this.bluePokemonImage.setIcon(bluePokemonImage);
     }

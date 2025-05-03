@@ -33,11 +33,6 @@ public class Panel2 extends JPanel {
         radioButton2Blue = new JRadioButton(gui.getTrainerBlue().getSelectedPokemon((byte)1).getName());
         radioButton3Blue = new JRadioButton(gui.getTrainerBlue().getSelectedPokemon((byte)2).getName());
 
-        if (!gui.getTrainerBlue().getSelectedPokemon((byte)0).isAlive()) radioButton1Blue.enable(false);
-        if (!gui.getTrainerBlue().getSelectedPokemon((byte)1).isAlive()) radioButton1Blue.enable(false);
-        if (!gui.getTrainerBlue().getSelectedPokemon((byte)2).isAlive()) radioButton1Blue.enable(false);
-
-
         radioButton1Blue.setActionCommand("Button1Left");
         radioButton2Blue.setActionCommand("Button2Left");
         radioButton3Blue.setActionCommand("Button3Left");
