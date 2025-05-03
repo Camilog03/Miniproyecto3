@@ -1,12 +1,15 @@
 package src;
 
-import src.characters.Trainer;
-import src.pokemons.*;
-import java.util.ArrayList;
+//import src.characters.Trainer;
+//import src.pokemons.*;
+//import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
+        new Gui();
+    }
+    /*public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);
 
         //Intro
@@ -117,7 +120,7 @@ public class App {
                 break;
             }
         }
-    }
+    }*/
 }
 
 
