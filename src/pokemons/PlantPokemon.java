@@ -59,9 +59,9 @@ public class PlantPokemon extends Pokemon {
         double damage;
 
         if (selectedAttack.isSpecial()) {
-            damage = ((selectedAttack.getAttackPower()) / (double) oponentPokemon.getDefenseSpecial()) + 2;
+            damage = ((selectedAttack.getAttackPower()) / (double) oponentPokemon.getDefenseSpecial()) + (Math.random() * 15) + 1;
         } else {
-            damage = ((selectedAttack.getAttackPower()) / (double) oponentPokemon.getDefenseFisic()) + 2;
+            damage = ((selectedAttack.getAttackPower()) / (double) oponentPokemon.getDefenseFisic()) + (Math.random() * 10) + 1;
         }
         damageMadeIt = (short)Math.round(damage*effectivity);
         oponentPokemon.receiveDamage(damageMadeIt);

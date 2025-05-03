@@ -9,6 +9,7 @@ public class Panel2 extends JPanel {
     private JLabel trainerRedLabel;
     private JRadioButton radioButton1Blue, radioButton2Blue, radioButton3Blue;
     private JRadioButton radioButton1Red, radioButton2Red, radioButton3Red;
+    private ButtonGroup leftButtonGroup, rightButtonGroup;
     
 
     public Panel2(Container container, CardLayout cardLayout, Gui gui) {
@@ -37,7 +38,7 @@ public class Panel2 extends JPanel {
         radioButton2Blue.setActionCommand("Button2Left");
         radioButton3Blue.setActionCommand("Button3Left");
 
-        ButtonGroup leftButtonGroup = new ButtonGroup();
+        leftButtonGroup = new ButtonGroup();
         leftButtonGroup.add(radioButton1Blue);
         leftButtonGroup.add(radioButton2Blue);
         leftButtonGroup.add(radioButton3Blue);
@@ -72,7 +73,7 @@ public class Panel2 extends JPanel {
 
 
 
-        ButtonGroup rightButtonGroup = new ButtonGroup();
+        rightButtonGroup = new ButtonGroup();
         rightButtonGroup.add(radioButton1Red);
         rightButtonGroup.add(radioButton2Red);
         rightButtonGroup.add(radioButton3Red);
@@ -117,11 +118,15 @@ public class Panel2 extends JPanel {
     }
 
     public void updateAlivePokemons() {
+            //limpiar seleccion de los pokemones del entrenador azul
+            leftButtonGroup.clearSelection();
             // Desactivar botones del entrenador azul si el Pokémon no está vivo
             radioButton1Blue.setEnabled(gui.getTrainerBlue().getSelectedPokemon((byte) 0).isAlive());
             radioButton2Blue.setEnabled(gui.getTrainerBlue().getSelectedPokemon((byte) 1).isAlive());
             radioButton3Blue.setEnabled(gui.getTrainerBlue().getSelectedPokemon((byte) 2).isAlive());
 
+            //limpiar seleccion de los pokemones del entrenador rojo
+            rightButtonGroup.clearSelection();
             // Desactivar botones del entrenador rojo si el Pokémon no está vivo
             radioButton1Red.setEnabled(gui.getTrainerRed().getSelectedPokemon((byte) 0).isAlive());
             radioButton2Red.setEnabled(gui.getTrainerRed().getSelectedPokemon((byte) 1).isAlive());

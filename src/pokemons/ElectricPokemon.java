@@ -57,9 +57,9 @@ public class ElectricPokemon extends Pokemon {
         double damage;
 
         if (selectedAttack.isSpecial()) {
-            damage = (selectedAttack.getAttackPower() * 1.5) - (oponentPokemon.getDefenseSpecial() * 0.5);
+            damage = ((selectedAttack.getAttackPower()) / (double) oponentPokemon.getDefenseSpecial()) + (Math.random() * 15) + 1;
         } else {
-            damage = (selectedAttack.getAttackPower() * 1.5) - (oponentPokemon.getDefenseFisic() * 0.5);
+            damage = ((selectedAttack.getAttackPower()) / (double) oponentPokemon.getDefenseFisic()) + (Math.random() * 10) + 1;
         }
         damageMadeIt = (short)Math.round(damage*effectivity);
         oponentPokemon.receiveDamage(damageMadeIt);
