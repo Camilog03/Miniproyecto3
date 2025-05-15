@@ -1,8 +1,8 @@
-package src.characters;
+package src.model.characters;
 
 import java.util.*;
 
-import src.pokemons.*;
+import src.model.pokemons.*;
 
 
 public class Trainer {

@@ -1,4 +1,4 @@
-package src;
+package src.view.Gui;
 
 import javax.swing.*;
 import java.awt.*;
@@ -73,7 +73,7 @@ public class Panel1 extends JPanel {
             JOptionPane.showMessageDialog(this, "¡Ambos campos están llenos! Iniciando juego...", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             gui.getTrainerBlue().setTrainerName(trainerName1.getText());
             gui.getTrainerRed().setTrainerName(trainerName2.getText());
-            ((Gui) SwingUtilities.getWindowAncestor(this)).showPanel2();
+            gui.showPanel2();
         }
 
     }

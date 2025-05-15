@@ -1,9 +1,9 @@
 package src;
 
-//import src.characters.Trainer;
-//import src.pokemons.*;
+//import src.model.characters.Trainer;
+//import src.model.pokemons.*;
 //import java.util.ArrayList;
-import java.util.Scanner;
+import src.view.Gui.Gui;
 
 public class App {
     public static void main(String[] args) {

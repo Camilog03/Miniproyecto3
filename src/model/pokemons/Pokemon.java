@@ -1,9 +1,9 @@
-package src.pokemons;
+package src.model.pokemons;
 
 import java.util.ArrayList;
 import java.util.Random;
 
-import src.actions.Attack;
+import src.model.actions.Attack;
 
 public abstract class Pokemon implements Comparable<Pokemon> {
 

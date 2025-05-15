@@ -1,9 +1,6 @@
-package src.pokemons;
+package src.model.pokemons;
 
-import java.util.ArrayList;
-import java.util.Scanner;
-
-import src.actions.Attack;
+import src.model.actions.Attack;
 
 public class RockPokemon extends Pokemon {
 

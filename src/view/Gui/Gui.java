@@ -1,12 +1,13 @@
-package src;
+package src.view.Gui;
 
-import src.characters.Trainer;
-import src.pokemons.Pokemon;
+import src.model.characters.Trainer;
+import src.model.pokemons.Pokemon;
+import src.view.View;
 
 import javax.swing.*;
 import java.awt.*;
 
-public class Gui extends JFrame {
+public class Gui extends JFrame implements View {
 
     private Trainer trainerBlue;
     private Trainer trainerRed;

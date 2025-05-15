@@ -1,20 +1,20 @@
-
-# 🏆 Simulador de Batallas Pokémon - Miniproyecto 2
+# 🧠 Simulador de Batallas Pokémon - Miniproyecto 3 (MVC)
 
 [![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)](https://www.java.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 > **Universidad del Valle - Colombia 🇨🇴**  
-> **Programación Orientada a Objetos | GUI Aplicada**
+> **Programación Orientada a Objetos | GUI Aplicada | Patrón MVC**
 
 ---
 
 ## 📚 Tabla de Contenidos
 
 - [Descripción](#descripción)
-- [Funcionalidades](#funcionalidades)
-- [Aplicación de POO](#aplicación-de-poo)
-- [Interfaz Gráfica (GUI)](#interfaz-gráfica-gui)
+- [Arquitectura MVC](#arquitectura-mvc)
+- [Componentes del Modelo](#componentes-del-modelo)
+- [Interfaz Gráfica (Vista)](#interfaz-gráfica-vista)
+- [Controlador](#controlador)
 - [Integrantes](#integrantes)
 - [Instalación y Uso](#instalación-y-uso)
 - [Buenas Prácticas y Evaluación](#buenas-prácticas-y-evaluación)
@@ -24,55 +24,54 @@
 
 ## 📖 Descripción
 
-Este proyecto es un **simulador de batallas Pokémon** desarrollado en **Java**, implementando conceptos de **Programación Orientada a Objetos (POO)** y una **Interfaz Gráfica de Usuario (GUI)**.  
-Permite que dos entrenadores se enfrenten utilizando equipos de Pokémon seleccionados aleatoriamente, siguiendo reglas clásicas de los juegos Pokémon.
+Este proyecto es una extensión del **Miniproyecto 2**, ahora adaptado al patrón de diseño **Modelo-Vista-Controlador (MVC)**.  
+El objetivo es mejorar la organización del código separando claramente la **lógica del juego**, la **interfaz gráfica del usuario (GUI)** y el **controlador** que gestiona la interacción entre ambos.
 
 ---
 
-## 🚀 Funcionalidades
+## 🧱 Arquitectura MVC
 
-- **Creación de Pokémon** con atributos: HP, Ataque, Defensa, etc.
-- **Definición de ataques** con potencia y tipo de daño (físico/especial).
-- **Entrenadores** con equipos aleatorios de hasta 3 Pokémon.
-- **Sistema de turnos** basado en la Velocidad.
-- **Elección de ataques** durante la batalla.
-- **Condición de derrota**: perder los 3 Pokémon.
-- **Interacción por GUI**, evitando la consola.
-- **Opción opcional** de mostrar **imágenes de Pokémon**.
+- **Modelo**: Contiene toda la lógica del juego (Pokémon, ataques, combate).
+- **Vista**: Interfaz visual construida con **Swing**, incluye pantallas de selección, combate y resultados.
+- **Controlador**: Gestiona la comunicación entre la vista y el modelo, según la interacción del usuario.
 
 ---
 
-## 🧠 Aplicación de POO
+## 🔧 Componentes del Modelo
 
-- 🧬 **Herencia**: Clases especializadas derivadas de Pokémon.
-- 🔁 **Polimorfismo**: Ataques y mecánicas de combate.
-- 🔒 **Encapsulamiento**: Atributos privados y métodos de acceso.
-- 🧱 **Modelado** claro de relaciones entre objetos.
-- ♻️ **Reutilización** del código del Miniproyecto 1.
+- 🐲 **Pokémon**: Atributos como nombre, tipo, HP, ataque, defensa, ataque especial, defensa especial, velocidad, y una lista de hasta 4 ataques.
+- ⚔️ **Ataque**: Definido por nombre, tipo (físico/especial, aunque el tipo no se usará) y potencia.
+- 🧑‍🎓 **Entrenador**: Nombre y equipo de hasta 3 Pokémon. Capacidad de elegir cuál entra al combate.
+- 🥊 **Batalla**: Gestiona el sistema de turnos, aplica daño y determina al ganador.
 
 ---
 
-## 🎨 Interfaz Gráfica (GUI)
+## 🎨 Interfaz Gráfica (Vista)
 
-- Uso de **Swing** para la construcción de interfaces.
-- Pantallas para:
-  - **Ingreso de nombres** de entrenadores.
-  - **Asignación aleatoria** de Pokémon.
-  - **Selección de ataques**.
-  - **Visualización del estado** de cada batalla.
-- **Estética cuidada** (basada en lo aprendido en clase).
-- *(Bonus)*: Opción de agregar **sprites de Pokémon**.
+- Pantalla de ingreso de nombres de entrenadores.
+- Visualización de los equipos Pokémon asignados aleatoriamente.
+- Interfaz para seleccionar ataques y mostrar el estado del combate.
+- *(Bonus)*: Posibilidad de mostrar imágenes de los Pokémon.
+- *(Bonus)*: Uso de generadores automáticos de interfaz (por ejemplo, en NetBeans).
+
+---
+
+## 🎮 Controlador
+
+- Se encarga de recibir eventos de la interfaz (clics, selecciones, etc.).
+- Conecta la vista con el modelo, enviando instrucciones y actualizando los datos mostrados al usuario.
+- Se recomienda utilizar la **segunda versión** del controlador vista en clase.
 
 ---
 
 ## 👥 Integrantes
 
-- 👤 Paula Jimena Bohórquez Bermúdez
-- 👤 Manuela Delgado Aguirre
-- 👤 Juan Camilo Gil Agudelo
-- 👤 Gabriel Esteban Burbano Mora
+- 👤 Paula Jimena Bohórquez Bermúdez  
+- 👤 Manuela Delgado Aguirre  
+- 👤 Juan Camilo Gil Agudelo  
+- 👤 Gabriel Esteban Burbano Mora  
 
-> ⚠️ **Importante**: Cada integrante debe aparecer aquí para recibir calificación.
+> ⚠️ **Importante**: Quien no aparezca aquí **no será calificado**.
 
 ---
 
@@ -80,31 +79,35 @@ Permite que dos entrenadores se enfrenten utilizando equipos de Pokémon selecci
 
 1. Clonar el repositorio:
    ```bash
-   git clone https://github.com/tu_usuario/SimuladorPokemon.git
+   git clone https://github.com/tu_usuario/SimuladorPokemonMVC.git
    ```
-2. Abrir el proyecto en **IntelliJ IDEA** (o cualquier IDE de Java).
-3. Ejecutar la clase `App.java` o la clase principal de la GUI.
+2. Abrir el proyecto en **NetBeans** o cualquier IDE de tu preferencia compatible con Java.
+3. Ejecutar la clase principal que lanza la interfaz.
 4. Seguir las instrucciones en pantalla.
 
 ---
 
 ## 📋 Buenas Prácticas y Evaluación
 
-- **Código limpio** y bien documentado.
-- **Commits claros** hechos por todos los integrantes.
-- **Uso de GitHub Kanban Board** para gestión de tareas.
-- **Comentarios** explicativos en secciones relevantes del código.
+- ✅ Código limpio, bien estructurado y comentado.
+- 🔁 Commits frecuentes realizados por todos los integrantes.
+- 📋 Uso del tablero **Kanban** para la organización del trabajo.
+- 📎 Inclusión de este README como archivo obligatorio.
 
 ---
 
 ## 🎯 Notas y Recomendaciones
 
-- **No** se permite intercambio de Pokémon en combate.
-- Los equipos son **asignados aleatoriamente**.
-- **Velocidad** determina qué Pokémon ataca primero.
-- Solo se debe usar lo aprendido en clase (material externo podría afectar la nota).
-- **Agregar imágenes** de Pokémon suma puntos extra.
+- No separar consola e interfaz. Todo debe estar conectado por el **controlador**.
+- Solo se evaluarán proyectos que respeten la arquitectura **MVC**.
+- Las imágenes y generadores automáticos de GUI pueden otorgar **puntos extra**.
+- Evaluación basada en las rúbricas:  
+  - C.E.4 (25%)  
+  - C.E.13 (25%)  
+  - C.E.14 (30%)  
+  - C.G.2 (10%)  
+  - C.G.4 (10%)  
 
 ---
 
-# 🎉 ¡Listo para la batalla!
+# 🎉 ¡A combatir con estilo y arquitectura limpia! 💥
