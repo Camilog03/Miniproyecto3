@@ -1,9 +1,7 @@
 package src.view.Gui;
-
 import src.model.characters.Trainer;
 import src.model.pokemons.Pokemon;
 import src.view.View;
-
 import javax.swing.*;
 import java.awt.*;
 
@@ -16,13 +14,14 @@ public class Gui extends JFrame implements View {
     private Panel1 panel1;
     private Panel2 panel2;
     private Panel3 panel3;
+
     public Gui(){
         setTitle("BATALLA POKEMON");
         setSize(800,500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        trainerBlue = new Trainer("");
-        trainerRed = new Trainer("");
+        //trainerBlue = new Trainer("");
+        //trainerRed = new Trainer("");
         trainerBlue.randomPokemon();
         trainerRed.randomPokemon();
 

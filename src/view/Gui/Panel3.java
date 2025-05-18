@@ -36,9 +36,9 @@ public class Panel3 extends JPanel implements ActionListener {
         JPanel blueImageAndHpPanel = new JPanel(new BorderLayout());
 
 
-        bluePokemonImage = new JLabel(new ImageIcon(new ImageIcon(gui.getTrainerBlue().getSelectedPokemon(indexPokemonBlue).getPath())
+        /*bluePokemonImage = new JLabel(new ImageIcon(new ImageIcon(gui.getTrainerBlue().getSelectedPokemon(indexPokemonBlue).getPath())
                 .getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
-        bluePokemonImage.setHorizontalAlignment(SwingConstants.CENTER);
+        bluePokemonImage.setHorizontalAlignment(SwingConstants.CENTER);*/
 
         bluePokemonHpLabel = new JLabel("HP = " + gui.getTrainerBlue().getSelectedPokemon(indexPokemonBlue).getHp(), SwingConstants.CENTER);
         bluePokemonHpLabel.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -71,9 +71,9 @@ public class Panel3 extends JPanel implements ActionListener {
         // Panel para la imagen y el HP
         JPanel redImageAndHpPanel = new JPanel(new BorderLayout());
 
-        redPokemonImage = new JLabel(new ImageIcon(new ImageIcon(gui.getTrainerRed().getSelectedPokemon(indexPokemonRed).getPath())
+        /*redPokemonImage = new JLabel(new ImageIcon(new ImageIcon(gui.getTrainerRed().getSelectedPokemon(indexPokemonRed).getPath())
                 .getImage().getScaledInstance(150, 150, Image.SCALE_SMOOTH)));
-        redPokemonImage.setHorizontalAlignment(SwingConstants.CENTER);
+        redPokemonImage.setHorizontalAlignment(SwingConstants.CENTER);*/
 
         redPokemonHpLabel = new JLabel("HP = " + gui.getTrainerRed().getSelectedPokemon(indexPokemonRed).getHp(), SwingConstants.CENTER);
         redPokemonHpLabel.setFont(new Font("Arial", Font.PLAIN, 14));
