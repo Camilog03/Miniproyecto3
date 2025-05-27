@@ -3,11 +3,16 @@ package src;
 //import src.model.characters.Trainer;
 //import src.model.pokemons.*;
 //import java.util.ArrayList;
+import src.controller.Controller;
+import src.model.characters.Trainer;
 import src.view.Gui.Gui;
 
 public class App {
     public static void main(String[] args) {
-        new Gui();
+        Trainer trainerBlue = new Trainer("");
+        Trainer trainerRed = new Trainer("");
+        new Controller(new Gui(), trainerBlue, trainerRed);
+
     }
     /*public static void main(String[] args) throws Exception {
         Scanner scanner = new Scanner(System.in);

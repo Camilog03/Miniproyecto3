@@ -6,6 +6,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Panel3 extends JPanel implements ActionListener {
+    //Contenedores y CardLayout
+    private Container container;
+    private CardLayout cardLayout;
+
     private JLabel blueTrainerLabel, bluePokemonLabel, redTrainerLabel, redPokemonLabel;
     private JButton attack1Blue, attack2Blue, attack3Blue, attack1Red, attack2Red, attack3Red;
     private Gui gui;
@@ -14,8 +18,9 @@ public class Panel3 extends JPanel implements ActionListener {
     private boolean isBlueTurn;
     private JLabel redPokemonHpLabel, bluePokemonHpLabel, bluePokemonImage, redPokemonImage;
 
-    public Panel3(Container container, CardLayout cardLayout, Gui gui) {
-        this.gui = gui;
+    public Panel3() {
+        this.container = container;
+        this.cardLayout = cardLayout;
 
         setLayout(new BorderLayout());
         setBackground(new Color(0x8FB5DE));
@@ -158,7 +163,7 @@ public class Panel3 extends JPanel implements ActionListener {
             gui.showPanel2();
             return;
         }
-        
+
         isBlueTurn = !isBlueTurn;
         updateButtonStates();
     }
@@ -166,14 +171,14 @@ public class Panel3 extends JPanel implements ActionListener {
     public void setPokemonIndexes(byte indexPokemonBlue, byte indexPokemonRed) {
         this.indexPokemonBlue = indexPokemonBlue;
         this.indexPokemonRed = indexPokemonRed;
-    
+
         isBlueTurn = gui.getTrainerBlue().getSelectedPokemon(indexPokemonBlue).getSpeed()
                 > gui.getTrainerRed().getSelectedPokemon(indexPokemonRed).getSpeed();
-    
+
         updateButtonStates();
         updateHpLabels();
     }
-    
+
     //Actualiza HP con los valores actuales
     public void updateHpLabels(){
         redPokemonHpLabel.setText("HP = " + gui.getTrainerRed().getSelectedPokemon(indexPokemonRed).getHp());
