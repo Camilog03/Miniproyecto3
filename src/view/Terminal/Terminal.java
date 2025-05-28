@@ -8,47 +8,6 @@ import src.model.characters.Trainer;
 import src.view.View;
 
 public class Terminal implements View {
-    
-    //winner(trainer1, trainer2);
-
-    /*public static void menuTrainerDecisions(Trainer trainer, Scanner scanner) {
-        //Pokemon assignation for trainers
-        System.out.println("\nEntrenador " + trainer.getTrainerName() + ", ¿cómo deseas formar tu equipo Pokémon?");
-        System.out.println("1. Crear mi propio equipo Pokémon \n2. Recibir un equipo Pokémon al azar");
-        System.out.print("Elige una opción: ");
-        int option = scanner.nextInt();
-        scanner.nextLine(); // Limpiar el buffer
-
-        while (option != 1 && option != 2) {
-            System.out.println("Por favor, elige una opción válida.");
-            System.out.print("Elige una opción: ");
-            option = scanner.nextInt();
-            scanner.nextLine(); // Limpiar el buffer
-        }
-
-        /*switch (option) {
-            case 1:
-                trainer.addCreatedPokemon(scanner);
-                trainer.showPokemons();
-                break;
-            case 2:
-                trainer.randomPokemon();
-                trainer.showPokemons();
-                break;
-        }
-    
-
-    public static void winner(Trainer trainer1, Trainer trainer2) {
-        for (int i = 0; i < trainer1.getSelectPokemonslist().size(); i++) {
-            if (trainer1.getSelectPokemonslist().get(i).isAlive()) {
-                System.out.println("¡El gran vencedor es " + trainer1.getTrainerName() + "! ¡Felicidades, Maestro Pokémon!");
-                break;
-            } else if (trainer2.getSelectPokemonslist().get(i).isAlive()) {
-                System.out.println("¡El gran vencedor es " + trainer2.getTrainerName() + "! ¡Felicidades, Maestro Pokémon!");
-                break;
-            }
-        }
-    }*/
 
     @Override
     public void showPanel1() {
@@ -76,18 +35,40 @@ public class Terminal implements View {
     @Override
     public void showPanel2(String blueTrainerName, String redTrainerName, Queue<String> namesBlue,
             Queue<String> namesRed, Queue<Boolean> aliveBlue, Queue<Boolean> aliveRed) {
+
+        byte indexBlue, indexRed;
+
         while (true) {
 
         System.out.println("\n\n------ ¡Es momento de elegir a tus Pokémon para la batalla! ------");
-        trainer1.showPokemons();
-        Pokemon po1 = trainer1.selectPokemon(scanner);
-        scanner.nextLine();
 
-        trainer2.showPokemons();
-        Pokemon po2 = trainer2.selectPokemon(scanner);
-        scanner.nextLine();
+            System.out.println("------ Pokemones Entrenador Azul " + blueTrainerName + "-------");
+            byte counterBlue = 1,  counterRed = 1;
+            while(namesBlue.isEmpty()){
+                System.out.println(counterRed + namesBlue.poll());
+                counterBlue++;
+            }
+
+            System.out.println("Ingrese su pokemon");
+
+            System.out.println("------ Pokemones Entrenador Rojo " + redTrainerName + "-------");
+            while(namesBlue.isEmpty()){
+                System.out.println(counterRed + namesBlue.poll());
+                counterRed++;
+            }
+
 
     }}
+
+    @Override
+    public void showPanel3(String menssageStart, String blueTrainerName, String redTrainerName, String bluePokemonName, String redPokemonName, String bluePath, String redPath, Queue<String> blueAttacks, Queue<String> redAttacks) {
+
+    }
+
+    @Override
+    public void updateHP(short hpBlue, short hpRed) {
+
+    }
 
     @Override
     public void updatePanel2AlivePokemons(Queue<Boolean> aliveBlue, Queue<Boolean> aliveRed) {
