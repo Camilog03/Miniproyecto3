@@ -56,30 +56,47 @@ public class Gui extends JFrame implements View {
         panel2.updateAlivePokemons(aliveBlue, aliveRed);
 
         cardLayout.show(container, "panel 2");
+
+    }
+
+
+    @Override
+    public void showPanel3(String menssageStart, String blueTrainerName, String redTrainerName, String bluePokemonName, String redPokemonName,
+                           String bluePath, String redPath,Queue<String> blueAttacks, Queue<String> redAttacks) {
+        showMessage(menssageStart);
+
+        panel3.setBlueTrainerName(blueTrainerName);
+        panel3.setRedTrainerName(redTrainerName);
+
+        panel3.setBluePokemonName(bluePokemonName);
+        panel3.setRedPokemonName(redPokemonName);
+
+        panel3.setBluePokemonImage(bluePath);
+        panel3.setRedPokemonImage(redPath);
+
+        panel3.setNamesAttacks(blueAttacks, redAttacks);
+
+
+
+        cardLayout.show(container, "panel 3");
+
     }
 
     @Override
-    public void updatePanel2AlivePokemons(Queue<Boolean> aliveBlue, Queue<Boolean> aliveRed){
-        panel2.updateAlivePokemons(aliveBlue, aliveRed);
-    }
-
-    @Override
-    public void showPanel3() {
-
+    public void updateHP(short hpBlue, short hpRed) {
+        panel3.updateHpLabels(hpBlue, hpRed);
     }
 
     @Override
     public void showMessage(String msg) {
-
+        JOptionPane.showMessageDialog(this, msg, "INFORMACION" ,JOptionPane.INFORMATION_MESSAGE);
     }
 
+    @Override
     public void setController(Controller controller) {
         panel1.setController(controller);
         panel2.setController(controller);
+        panel3.setController(controller);
     }
 
-    public byte selectPokemon(){
-
-        return 1;
-    }
 }

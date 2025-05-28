@@ -20,6 +20,8 @@ public class Controller {
     private Queue<String> namesRed;
     private Queue<Boolean> alivesBlue;
     private Queue<Boolean> alivesRed;
+    private byte indexPokemonBlue;
+    private byte indexPokemonRed;
 
     public Controller(View view,  Trainer trainerBlue, Trainer trainerRed) {
         this.view = view;
@@ -66,15 +68,62 @@ public class Controller {
         alivesRed.add(trainerRed.getSelectPokemonslist().get(2).isAlive());
 
         view.showPanel2(trainerBlue.getTrainerName(), trainerRed.getTrainerName(), namesBlue, namesRed, alivesBlue, alivesRed);
+
     }
 
     public void goToPanel3(byte indexBlue, byte indexRed){
-    //Funcion panel 3
+        this.indexPokemonBlue =  indexBlue;
+        this.indexPokemonRed =  indexRed;
+
+        boolean turn = trainerBlue.getSelectedPokemon(indexBlue).getSpeed() > trainerRed.getSelectedPokemon(indexRed).getSpeed();
+
+        Queue<String> blueAttacks = new LinkedList<>();
+        Queue<String> redAttacks = new LinkedList<>();
+
+        blueAttacks.add(trainerBlue.getSelectedPokemon(indexBlue).getAttacksInstance().get(0).getName());
+        blueAttacks.add(trainerBlue.getSelectedPokemon(indexBlue).getAttacksInstance().get(1).getName());
+        blueAttacks.add(trainerBlue.getSelectedPokemon(indexBlue).getAttacksInstance().get(2).getName());
+
+        redAttacks.add(trainerRed.getSelectedPokemon(indexRed).getAttacksInstance().get(0).getName());
+        redAttacks.add(trainerRed.getSelectedPokemon(indexRed).getAttacksInstance().get(1).getName());
+        redAttacks.add(trainerRed.getSelectedPokemon(indexRed).getAttacksInstance().get(2).getName());
+
+        view.updateHP(trainerBlue.getSelectedPokemon(indexBlue).getHp(), trainerRed.getSelectedPokemon(indexRed).getHp());
+
+        view.showPanel3("Inicia el entrandor " + (turn?"AZUL":"ROJO") ,trainerBlue.getTrainerName(),trainerRed.getTrainerName(), trainerBlue.getSelectedPokemon(indexBlue).getName(),
+                trainerRed.getSelectedPokemon(indexRed).getName(), trainerBlue.getSelectedPokemon(indexBlue).getPath(), trainerRed.getSelectedPokemon(indexRed).getPath() ,blueAttacks, redAttacks);
     }
-    /*public void Ganador(){
+
+    public void checkAlivePokemon(){
+        if (!trainerBlue.getSelectedPokemon(indexPokemonBlue).isAlive() ||
+                !trainerRed.getSelectedPokemon(indexPokemonRed).isAlive()) {
+            String deadPokemon = trainerBlue.getSelectedPokemon(indexPokemonBlue).isAlive() ? trainerRed.getSelectedPokemon(indexPokemonRed).getName()
+                    : trainerBlue.getSelectedPokemon(indexPokemonBlue).getName();
+
+            view.showMessage(deadPokemon + " ya no puede continuar...\nAcepta para volver al menú.");
+            goToPanel2();
+            winner();
+        }
+    }
+
+    public void updateHP(){
+        view.updateHP(trainerBlue.getSelectedPokemon(indexPokemonBlue).getHp(), trainerRed.getSelectedPokemon(indexPokemonRed).getHp());
+    }
+
+    public void blueMakeDamage(byte indexAttack){
+        trainerBlue.getSelectedPokemon(indexPokemonBlue).doAttack(trainerRed.getSelectedPokemon(indexPokemonRed), indexAttack);
+        view.showMessage(trainerRed.getSelectedPokemon(indexPokemonRed).getName() + " recibio " + trainerBlue.getSelectedPokemon(indexPokemonBlue).getDamageMadeIt() + " puntos de daño");
+    }
+
+    public void redMakeDamage(byte indexAttack){
+        trainerRed.getSelectedPokemon(indexPokemonRed).doAttack(trainerBlue.getSelectedPokemon(indexPokemonBlue), indexAttack);
+        view.showMessage(trainerBlue.getSelectedPokemon(indexPokemonBlue).getName() + " recibio " + trainerRed.getSelectedPokemon(indexPokemonRed).getDamageMadeIt() + " puntos de daño");
+    }
+
+    public void winner(){
         byte counterBlue = 0;
         byte counterRed = 0;
-        for(Pokemon po:){
+        for(Pokemon po:trainerBlue.getSelectPokemonslist()){
             if(!po.isAlive()){
                 counterBlue++;
             }
@@ -85,12 +134,12 @@ public class Controller {
             }
         }
         if(counterBlue == 3 || counterRed == 3){
-            JOptionPane.showMessageDialog(this, "Gana el entrenador "+ (counterBlue==3?"Rojo: "+trainerRed.getTrainerName():"Azul: "+trainerBlue.getTrainerName()) +
+            view.showMessage("Gana el entrenador "+ (counterBlue==3?"Rojo: "+trainerRed.getTrainerName():"Azul: "+trainerBlue.getTrainerName()) +
                     "\nFelicidades!!!!!!"+
                     "\nEl juego ha FINALIZADO...");
             System.exit(0);
         }
-    }*/
+    }
 
 
 }
