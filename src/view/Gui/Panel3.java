@@ -151,8 +151,6 @@ public class Panel3 extends JPanel implements ActionListener {
             controller.redMakeDamage(indexAttack);
         }
 
-        controller.updateHP();
-
         // Verificar si alguno de los Pokemon fue derrotado
         controller.checkAlivePokemon();
 

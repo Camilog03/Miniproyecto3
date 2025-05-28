@@ -1,5 +1,7 @@
 package src.view.Terminal;
 
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
 
@@ -54,6 +56,10 @@ public class Terminal implements View {
         }
         System.out.print("Ingrese su pokemon:");
         indexRed = scanner.nextByte();
+
+        indexBlue--;
+        indexRed--;
+
         controller.goToPanel3(indexBlue, indexRed);
 
     }
@@ -65,21 +71,25 @@ public class Terminal implements View {
 
         System.out.println("\n\n------ ¡Comienza la Batalla! ------");
         while (hpBlue > 0 && hpRed > 0) {
+            ArrayList<String> blueAttacksCopy = new ArrayList<>(blueAttacks);
+            ArrayList<String> redAttacksCopy = new ArrayList<>(redAttacks);
+
             byte indexAttack = -1;
 
             String attacker = (turn ? bluePokemonName:redPokemonName);
             String defender = (!turn ? bluePokemonName:redPokemonName);
 
-            System.out.println(attacker + " lanza un ataque feroz contra " + defender + "!");
             System.out.println("------ Ataques ------");
-            byte counter = 0;
+            byte counter = 1;
             if (turn) {
-                while (!blueAttacks.isEmpty()) {
-                    System.out.println(counter + ". " + blueAttacks.poll());
+                for(String attack :  blueAttacksCopy){
+                    System.out.println(counter + ". " + attack);
+                    counter++;
                 }
             }else{
-                while (!redAttacks.isEmpty()) {
-                    System.out.println(counter + ". " + redAttacks.poll());
+                for(String attack :  redAttacksCopy){
+                    System.out.println(counter + ". " + attack);
+                    counter++;
                 }
             }
             System.out.print("Selecciona tu ataque: ");
@@ -91,7 +101,7 @@ public class Terminal implements View {
             }else{
                 controller.redMakeDamage(indexAttack);
             }
-            System.out.println("Vida actual de " + defender + (turn ? hpBlue:hpRed));
+            System.out.println(defender + " - " +(turn ? hpBlue:hpRed) + "HP");
             //Change the attacker and defender
             turn = !turn;
            

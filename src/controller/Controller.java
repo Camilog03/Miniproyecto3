@@ -101,8 +101,8 @@ public class Controller {
                     : trainerBlue.getSelectedPokemon(indexPokemonBlue).getName();
 
             view.showMessage(deadPokemon + " ya no puede continuar...\nAcepta para volver al menú.");
-            goToPanel2();
             winner();
+            goToPanel2();
         }
     }
 
@@ -113,11 +113,13 @@ public class Controller {
     public void blueMakeDamage(byte indexAttack){
         trainerBlue.getSelectedPokemon(indexPokemonBlue).doAttack(trainerRed.getSelectedPokemon(indexPokemonRed), indexAttack);
         view.showMessage(trainerRed.getSelectedPokemon(indexPokemonRed).getName() + " recibio " + trainerBlue.getSelectedPokemon(indexPokemonBlue).getDamageMadeIt() + " puntos de daño");
+        updateHP();
     }
 
     public void redMakeDamage(byte indexAttack){
         trainerRed.getSelectedPokemon(indexPokemonRed).doAttack(trainerBlue.getSelectedPokemon(indexPokemonBlue), indexAttack);
         view.showMessage(trainerBlue.getSelectedPokemon(indexPokemonBlue).getName() + " recibio " + trainerRed.getSelectedPokemon(indexPokemonRed).getDamageMadeIt() + " puntos de daño");
+        updateHP();
     }
 
     public void winner(){
