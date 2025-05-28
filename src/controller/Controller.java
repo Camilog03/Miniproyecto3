@@ -91,7 +91,7 @@ public class Controller {
         view.updateHP(trainerBlue.getSelectedPokemon(indexBlue).getHp(), trainerRed.getSelectedPokemon(indexRed).getHp());
 
         view.showPanel3("Inicia el entrandor " + (turn?"AZUL":"ROJO") ,trainerBlue.getTrainerName(),trainerRed.getTrainerName(), trainerBlue.getSelectedPokemon(indexBlue).getName(),
-                trainerRed.getSelectedPokemon(indexRed).getName(), trainerBlue.getSelectedPokemon(indexBlue).getPath(), trainerRed.getSelectedPokemon(indexRed).getPath() ,blueAttacks, redAttacks);
+                trainerRed.getSelectedPokemon(indexRed).getName(), trainerBlue.getSelectedPokemon(indexBlue).getPath(), trainerRed.getSelectedPokemon(indexRed).getPath() ,blueAttacks, redAttacks, turn);
     }
 
     public void checkAlivePokemon(){
@@ -139,6 +139,10 @@ public class Controller {
                     "\nEl juego ha FINALIZADO...");
             System.exit(0);
         }
+    }
+
+    public void goToPanel1(){
+        view.showPanel1();
     }
 
 

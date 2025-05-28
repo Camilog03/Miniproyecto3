@@ -62,7 +62,7 @@ public class Gui extends JFrame implements View {
 
     @Override
     public void showPanel3(String menssageStart, String blueTrainerName, String redTrainerName, String bluePokemonName, String redPokemonName,
-                           String bluePath, String redPath,Queue<String> blueAttacks, Queue<String> redAttacks) {
+                           String bluePath, String redPath,Queue<String> blueAttacks, Queue<String> redAttacks, boolean turn) {
         showMessage(menssageStart);
 
         panel3.setBlueTrainerName(blueTrainerName);

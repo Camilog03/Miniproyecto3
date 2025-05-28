@@ -5,31 +5,28 @@ import java.util.Scanner;
 
 import src.controller.Controller;
 import src.model.characters.Trainer;
+import src.model.pokemons.Pokemon;
 import src.view.View;
 
 public class Terminal implements View {
+    private Scanner scanner = new Scanner(System.in);
+    private Controller controller;
+    private short hpBlue, hpRed;
 
     @Override
     public void showPanel1() {
-        Scanner scanner = new Scanner(System.in);
-
+        String trainerBlue, trainerRed;
         //Intro
         System.out.println("¡Bienvenido al mundo Pokémon, entrenador!");
         System.out.println("¡Prepárate para una aventura llena de batallas épicas! \nPor favor, ingresa los nombres de los entrenadores que se enfrentarán.");
 
         //Creating trainers
         System.out.print("Nombre del Entrenador 1: ");
-        Trainer trainer1 = new Trainer(scanner.nextLine());
+        trainerBlue = scanner.nextLine();
         System.out.print("Nombre del Entrenador 2: ");
-        Trainer trainer2 = new Trainer(scanner.nextLine());
-
-        System.out.println("\n\n¡Es hora de que el Entrenador 1 forme su equipo Pokémon!\n\n");
-
-        //menuTrainerDecisions(trainer1, scanner);
-
-        System.out.println("\n\n¡Ahora es el turno del Entrenador 2 para formar su equipo Pokémon!\n\n");
-
-        //menuTrainerDecisions(trainer2, scanner);
+        trainerRed = scanner.nextLine();
+        controller.setTrainersNames(trainerBlue, trainerRed);
+        controller.goToPanel2();
     }
 
     @Override
@@ -38,90 +35,83 @@ public class Terminal implements View {
 
         byte indexBlue, indexRed;
 
-        while (true) {
-
         System.out.println("\n\n------ ¡Es momento de elegir a tus Pokémon para la batalla! ------");
 
-            System.out.println("------ Pokemones Entrenador Azul " + blueTrainerName + "-------");
-            byte counterBlue = 1,  counterRed = 1;
-            while(namesBlue.isEmpty()){
-                System.out.println(counterRed + namesBlue.poll());
-                counterBlue++;
-            }
+        System.out.println("------ Pokemones Entrenador Azul " + blueTrainerName + "-------");
+        byte counterBlue = 1,  counterRed = 1;
+        while(!namesBlue.isEmpty()){
+            System.out.println(counterBlue + ". "+ namesBlue.poll() + " - "+ (aliveBlue.poll() ? "Vivo":"Derrotado"));
+            counterBlue++;
+        }
 
-            System.out.println("Ingrese su pokemon");
+        System.out.print("Ingrese su pokemon:");
+        indexBlue = scanner.nextByte();
 
-            System.out.println("------ Pokemones Entrenador Rojo " + redTrainerName + "-------");
-            while(namesBlue.isEmpty()){
-                System.out.println(counterRed + namesBlue.poll());
-                counterRed++;
-            }
+        System.out.println("------ Pokemones Entrenador Rojo " + redTrainerName + "-------");
+        while(!namesRed.isEmpty()){
+            System.out.println(counterRed + ". " + namesRed.poll() + " - "+ (aliveRed.poll() ? "Vivo":"Derrotado"));
+            counterRed++;
+        }
+        System.out.print("Ingrese su pokemon:");
+        indexRed = scanner.nextByte();
+        controller.goToPanel3(indexBlue, indexRed);
 
-
-    }}
+    }
 
     @Override
-    public void showPanel3(String menssageStart, String blueTrainerName, String redTrainerName, String bluePokemonName, String redPokemonName, String bluePath, String redPath, Queue<String> blueAttacks, Queue<String> redAttacks) {
+    public void showPanel3(String menssageStart, String blueTrainerName, String redTrainerName, String bluePokemonName, String redPokemonName, String bluePath, String redPath, Queue<String> blueAttacks, Queue<String> redAttacks, boolean turn) {
+        
+        showMessage(menssageStart);
 
+        System.out.println("\n\n------ ¡Comienza la Batalla! ------");
+        while (hpBlue > 0 && hpRed > 0) {
+            byte indexAttack = -1;
+
+            String attacker = (turn ? bluePokemonName:redPokemonName);
+            String defender = (!turn ? bluePokemonName:redPokemonName);
+
+            System.out.println(attacker + " lanza un ataque feroz contra " + defender + "!");
+            System.out.println("------ Ataques ------");
+            byte counter = 0;
+            if (turn) {
+                while (!blueAttacks.isEmpty()) {
+                    System.out.println(counter + ". " + blueAttacks.poll());
+                }
+            }else{
+                while (!redAttacks.isEmpty()) {
+                    System.out.println(counter + ". " + redAttacks.poll());
+                }
+            }
+            System.out.print("Selecciona tu ataque: ");
+            indexAttack = scanner.nextByte() ;
+            indexAttack--;
+
+            if (turn) {
+                controller.blueMakeDamage(indexAttack);
+            }else{
+                controller.redMakeDamage(indexAttack);
+            }
+            System.out.println("Vida actual de " + defender + (turn ? hpBlue:hpRed));
+            //Change the attacker and defender
+            turn = !turn;
+           
+        }
+        controller.checkAlivePokemon();
     }
 
     @Override
     public void updateHP(short hpBlue, short hpRed) {
-
-    }
-
-    @Override
-    public void updatePanel2AlivePokemons(Queue<Boolean> aliveBlue, Queue<Boolean> aliveRed) {
-        
-    }
-
-    @Override
-    public void showPanel3() {
-        byte round = 1;
-
-        System.out.println("\n\n------ ¡Comienza la Batalla de la Ronda #" + round + "! ------");
-
-        Pokemon attacker = po1;
-        Pokemon defender = po2;
-
-        if (po1.getHp() > po2.getHp()) {
-            attacker = po2;
-            defender = po1;
-        }
-        while (po1.isAlive() && po2.isAlive()) {
-
-            System.out.println(attacker.getName() + " lanza un ataque feroz contra " + defender.getName() + "!");
-            attacker.doAttack(defender, scanner);
-
-            scanner.nextLine();
-
-            System.out.println("\n\n¡" + defender.getName() + " tiene " + defender.getHp() + " puntos de vida restantes!");
-
-            if (!defender.isAlive()) {
-                System.out.println("¡" + defender.getName() + " ha caído en combate!");
-                System.out.println("¡" + attacker.getName() + " es el vencedor de esta batalla!");
-                break;
-            }
-            System.out.println("\n\n¡Es el turno de " + defender.getName() + " para contraatacar!");
-
-            //Change the attacker and defender
-            Pokemon temp = attacker;
-            attacker = defender;
-            defender = temp;
-        }
-        if (round == 3) {
-            break;
-        } else {
-            round++;
-        }
+        this.hpBlue = hpBlue;
+        this.hpRed = hpRed;
     }
 
     @Override
     public void showMessage(String msg) {
-        
+        System.out.println(msg);
     }
 
     @Override
     public void setController(Controller controller) {
+        this.controller = controller;
     }
 }

@@ -112,6 +112,7 @@ public class Panel2 extends JPanel {
         // Añadir boton al panel de boton
 
         buttonPanel.add(startBattleButton);
+        buttonPanel.add(changeToTerminal);
 
         // Añadir paneles izquierdo y derecho al centro y agregar
 
