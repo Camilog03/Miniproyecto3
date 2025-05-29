@@ -154,10 +154,11 @@ public class Controller {
             view = new Terminal(); 
         } else {
             view = new src.view.Gui.Gui();
+            goToPanel3(indexPokemonRed, indexPokemonBlue);
         }
         isGui = !isGui;
         view.setController(this);
-        view.showPanel2(trainerBlue.getTrainerName(), trainerRed.getTrainerName(), namesBlue, namesRed, alivesRed, alivesBlue);
+        goToPanel2();
 
 
     }

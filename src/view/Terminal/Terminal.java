@@ -45,8 +45,6 @@ public class Terminal implements View {
 
         byte indexBlue, indexRed;
 
-        System.out.println("\n\n------ ¡Es momento de elegir a tus Pokémon para la batalla! ------");
-
         System.out.println("------ Pokemones Entrenador Azul " + blueTrainerName + "-------");
         byte counterBlue = 1,  counterRed = 1;
         while(!namesBlue.isEmpty()){
@@ -64,10 +62,17 @@ public class Terminal implements View {
         }
         System.out.print("Ingrese su pokemon:");
         indexRed = scanner.nextByte();
-
+        scanner.nextLine();
         indexBlue--;
         indexRed--;
-
+        
+        System.out.println("Deseas cambiar a vista Gui? (S/N)");
+        String response = scanner.nextLine();
+       
+        if (response.equalsIgnoreCase("S")) {
+            controller.changeView();
+            return;
+        }
         controller.goToPanel3(indexBlue, indexRed);
 
     }
