@@ -12,9 +12,9 @@ public class App {
     public static void main(String[] args) {
         Trainer trainerBlue = new Trainer("");
         Trainer trainerRed = new Trainer("");
-        
-        new Controller(new Gui(), trainerBlue, trainerRed, true);
-        
+        Controller controller = new Controller(new Terminal(), trainerBlue, trainerRed, false);
+        //new Controller(new Gui(), trainerBlue, trainerRed, true);
+        controller.goToPanel1();
     }
 }
 

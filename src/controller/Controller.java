@@ -151,12 +151,13 @@ public class Controller {
 
     public void changeView(){
         if(isGui){
-            view = new Terminal(this); 
+            view = new Terminal(); 
         } else {
-            view = new src.view.Gui.Gui(this, trainerBlue, trainerRed);
+            view = new src.view.Gui.Gui();
         }
         isGui = !isGui;
-        view.showPanel1();
+        view.setController(this);
+        view.showPanel2(trainerBlue.getTrainerName(), trainerRed.getTrainerName(), namesBlue, namesRed, alivesRed, alivesBlue);
 
 
     }
