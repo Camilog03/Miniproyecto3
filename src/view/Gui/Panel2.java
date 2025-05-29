@@ -4,7 +4,6 @@ import src.controller.Controller;
 
 import java.awt.*;
 import java.util.Queue;
-import java.util.Stack;
 import javax.swing.*;
 
 public class Panel2 extends JPanel {

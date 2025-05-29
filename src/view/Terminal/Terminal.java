@@ -1,13 +1,9 @@
 package src.view.Terminal;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
-
 import src.controller.Controller;
-import src.model.characters.Trainer;
-import src.model.pokemons.Pokemon;
 import src.view.View;
 
 public class Terminal implements View {

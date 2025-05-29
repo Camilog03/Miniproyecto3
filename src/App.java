@@ -1,8 +1,5 @@
 package src;
 
-//import src.model.characters.Trainer;
-//import src.model.pokemons.*;
-//import java.util.ArrayList;
 import src.controller.Controller;
 import src.model.characters.Trainer;
 import src.view.Gui.Gui;
@@ -13,12 +10,11 @@ public class App {
         Trainer trainerBlue = new Trainer("");
         Trainer trainerRed = new Trainer("");
 
-        //Uso con terminal como primera vista
+
         Controller controller = new Controller(new Terminal(), trainerBlue, trainerRed, false);
+        //Controller controller = new Controller(new Gui(), trainerBlue, trainerRed, true);
         controller.start();
 
-        //Uso con GUI como primera vista descomentar para probar
-        //new Controller(new Gui(), trainerBlue, trainerRed, true);
     }
 }
 

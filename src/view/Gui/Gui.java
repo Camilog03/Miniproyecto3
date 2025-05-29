@@ -1,11 +1,9 @@
 package src.view.Gui;
 import src.controller.Controller;
-import src.model.characters.Trainer;
-import src.model.pokemons.Pokemon;
 import src.view.View;
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
+
 import java.util.Queue;
 
 public class Gui extends JFrame implements View {

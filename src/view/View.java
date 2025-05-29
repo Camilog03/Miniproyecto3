@@ -1,9 +1,6 @@
 package src.view;
 
 import src.controller.Controller;
-
-import java.awt.event.ActionEvent;
-import java.util.ArrayList;
 import java.util.Queue;
 
 public interface View {

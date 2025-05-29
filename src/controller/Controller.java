@@ -4,10 +4,6 @@ import src.model.characters.Trainer;
 import src.model.pokemons.Pokemon;
 import src.view.Terminal.Terminal;
 import src.view.View;
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayDeque;
 import java.util.LinkedList;
 import java.util.Queue;
 
