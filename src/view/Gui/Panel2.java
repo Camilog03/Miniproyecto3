@@ -84,11 +84,13 @@ public class Panel2 extends JPanel {
 
         // Botón "Empezar Batalla"
         JButton startBattleButton = new JButton("Empezar Batalla");
+
+        // Botón "Cambiar a Terminal"
         JButton changeToTerminal = new JButton("Cambiar a Terminal");
 
         // Acción del botón
         startBattleButton.addActionListener(e -> startBottonAction());
-
+        changeToTerminal.addActionListener(e -> controller.changeView());
         // Añadir elementos en los paneles respectivos
 
         //Izquierdos

@@ -13,9 +13,8 @@ public class App {
         Trainer trainerBlue = new Trainer("");
         Trainer trainerRed = new Trainer("");
         
-        Controller controller = new Controller(new Terminal(), trainerBlue, trainerRed);
-        controller.goToPanel1();
-
+        new Controller(new Gui(), trainerBlue, trainerRed, true);
+        
     }
 }
 

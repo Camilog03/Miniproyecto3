@@ -20,11 +20,19 @@ public class Terminal implements View {
         System.out.println("¡Bienvenido al mundo Pokémon, entrenador!");
         System.out.println("¡Prepárate para una aventura llena de batallas épicas! \nPor favor, ingresa los nombres de los entrenadores que se enfrentarán.");
 
+
         //Creating trainers
         System.out.print("Nombre del Entrenador 1: ");
         trainerBlue = scanner.nextLine();
         System.out.print("Nombre del Entrenador 2: ");
         trainerRed = scanner.nextLine();
+        System.out.println("Deseas cambiar a vista Gui? (S/N)");
+        String response = scanner.nextLine();
+        if (response.equalsIgnoreCase("S")) {
+            controller.changeView();
+            return;
+        }
+
         controller.setTrainersNames(trainerBlue, trainerRed);
         controller.goToPanel2();
     }

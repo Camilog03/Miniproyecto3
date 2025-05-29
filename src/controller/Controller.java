@@ -22,11 +22,13 @@ public class Controller {
     private Queue<Boolean> alivesRed;
     private byte indexPokemonBlue;
     private byte indexPokemonRed;
+    private boolean isGui;
 
-    public Controller(View view,  Trainer trainerBlue, Trainer trainerRed) {
+    public Controller(View view,  Trainer trainerBlue, Trainer trainerRed, boolean isGui) {
         this.view = view;
         this.trainerBlue = trainerBlue;
         this.trainerRed = trainerRed;
+        this.isGui = isGui;
 
         //Random pokemons
         this.trainerBlue.randomPokemon();
@@ -143,6 +145,18 @@ public class Controller {
 
     public void goToPanel1(){
         view.showPanel1();
+    }
+
+    public void changeView(){
+        if(isGui){
+            view = new Terminal(this); 
+        } else {
+            view = new src.view.Gui.Gui(this, trainerBlue, trainerRed);
+        }
+        isGui = !isGui;
+        view.showPanel1();
+
+
     }
 
 
