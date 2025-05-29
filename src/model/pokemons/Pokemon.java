@@ -19,9 +19,7 @@ public abstract class Pokemon implements Comparable<Pokemon> {
     private short speed;
     private boolean alive = true; //For default, it will always start as true
     protected ArrayList<Attack> attacksOfClass = new ArrayList<Attack>();
-    public ArrayList<Attack> getAttacksInstance() {
-        return attacksInstance;
-    }
+
 
     protected ArrayList<Attack> attacksInstance = new ArrayList<Attack>(MAXATTACKS);
 
@@ -54,7 +52,7 @@ public abstract class Pokemon implements Comparable<Pokemon> {
         return type;
     }
 
-    public double getHp() {
+    public short getHp() {
         return hp;
     }
 
@@ -123,39 +121,12 @@ public abstract class Pokemon implements Comparable<Pokemon> {
         attacksInstance.add(attacksOfClass.get(indexAttack));
     }
 
-
-    /*
-        METHODS DISABLE FOR THE GUI
-    Selected the attacks of the pokemon
-    public void selectAttack(Scanner scanner){
-        System.out.println("----------- ATAQUES DE TIPO "+ type + " -----------");
-        for (int i = 0; i < attacksOfClass.size(); i += 2) {
-            if (i + 1 < attacksOfClass.size()) {
-                System.out.println((i + 1) + ". " + attacksOfClass.get(i) + "\t\t" + (i + 2) + ". " + attacksOfClass.get(i + 1));
-            } else {
-                System.out.println((i + 1) + ". " + attacksOfClass.get(i));
-            }
-        }
-
-        System.out.println("----Ingrese los ataques a continuacion----");
-
-        for (int i = 0; i < MAXATTACKS; i++) {
-            System.out.print("Ataque #" + (i + 1) + ": ");
-            int indexAddPokemonTemp = scanner.nextInt();
-            attackSelected.add(attacksOfClass.get(indexAddPokemonTemp - 1));
-        }
-    }
-
-    //Shows attacks
-    public void showsAttacks(){
-        for (int i = 0; i < MAXATTACKS; i++) {
-            System.out.println((i + 1) + ". " + attackSelected.get(i));
-        }
+    public ArrayList<Attack> getAttacksInstance() {
+        return attacksInstance;
     }
 
     //toString method to print the object on the console
     public String toString() {
-        return name + "\tTipo:" + type + "\tHP:" + hp + "\tDEF FISICA:" + defense + "\tEstado: " + (alive ? "Vivo" : "Muerto");
+        return name + "\tTipo:" + type + "\tHP:" + hp + "\tDEF FISICA:"  + "\tEstado: " + (alive ? "Vivo" : "Muerto");
     }
-    */
 }

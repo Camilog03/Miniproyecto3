@@ -74,40 +74,24 @@ public class Trainer {
         randomPokemons.add(new FlyingPokemon("Spearow", Type.FLYING, (short) 40, (short) 30, (short) 50, (short) 70, "src/images/pokemonsImages/flying/spearrow.png"));
         randomPokemons.add(new FlyingPokemon("Taillow", Type.FLYING, (short) 40, (short) 30, (short) 55, (short) 85, "src/images/pokemonsImages/flying/taillow.png"));
 
+        selectPokemonslist.clear();
+
         Random rand = new Random();
 
-        for (int i = 0; i < MAX_POKEMONS; i++) {
-            selectPokemonslist.add(randomPokemons.get(rand.nextInt(randomPokemons.size())));
-            for (int j = 0; j < Pokemon.getMaxAttacks(); j++) {
-                selectPokemonslist.get(selectPokemonslist.size() - 1).selectAttacksRandom();
-                /* 15 NEED TO BE CHANGED AS AN ATTRIBUTE THAT REPRESENTS
-                   THE AMOUNT OF ATTACKS THAT ARE ON THE CLASS */
+        Set<Pokemon> setNotDuplicates = new HashSet<>();
+
+        while (setNotDuplicates.size() < MAX_POKEMONS) {
+            setNotDuplicates.add(randomPokemons.get(rand.nextInt(randomPokemons.size())));
+        }
+
+        selectPokemonslist.addAll(setNotDuplicates);
+
+        for (Pokemon pokemon : selectPokemonslist) {
+            for (int i = 0; i < Pokemon.getMaxAttacks(); i++){
+                pokemon.selectAttacksRandom();
             }
         }
+
     }
 
-    /* DISABLE FUNCTIONS FOR THE GUI
-
-    public void showPokemons() {
-        Collections.sort(selectPokemonslist);
-        System.out.println("\nPokemones del entrenador " + trainerName + ":");
-        for (int i = 0; i < selectPokemonslist.size(); i++) {
-            Pokemon pokemon = selectPokemonslist.get(i);
-            System.out.println((i + 1) + ". " + pokemon);
-        }
-    }
-
-    public Pokemon selectPokemon(Scanner scanner) {
-        System.out.print("Seleccion de Pokemon (1-3): ");
-        while(true) {
-            int option = scanner.nextInt();
-            if (selectPokemonslist.get(option-1).isAlive() && (option >= 1 && option <= 3)) {
-                return selectPokemonslist.get(option-1);
-            }
-            else{
-                System.out.println("Ingresa una opcion disponible");
-            }
-        }
-    }
-    */
 }

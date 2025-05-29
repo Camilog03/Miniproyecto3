@@ -17,8 +17,7 @@
 - [Controlador](#controlador)
 - [Integrantes](#integrantes)
 - [Instalación y Uso](#instalación-y-uso)
-- [Buenas Prácticas y Evaluación](#buenas-prácticas-y-evaluación)
-- [Notas y Recomendaciones](#notas-y-recomendaciones)
+
 
 ---
 
@@ -84,30 +83,3 @@ El objetivo es mejorar la organización del código separando claramente la **l�
 2. Abrir el proyecto en **NetBeans** o cualquier IDE de tu preferencia compatible con Java.
 3. Ejecutar la clase principal que lanza la interfaz.
 4. Seguir las instrucciones en pantalla.
-
----
-
-## 📋 Buenas Prácticas y Evaluación
-
-- ✅ Código limpio, bien estructurado y comentado.
-- 🔁 Commits frecuentes realizados por todos los integrantes.
-- 📋 Uso del tablero **Kanban** para la organización del trabajo.
-- 📎 Inclusión de este README como archivo obligatorio.
-
----
-
-## 🎯 Notas y Recomendaciones
-
-- No separar consola e interfaz. Todo debe estar conectado por el **controlador**.
-- Solo se evaluarán proyectos que respeten la arquitectura **MVC**.
-- Las imágenes y generadores automáticos de GUI pueden otorgar **puntos extra**.
-- Evaluación basada en las rúbricas:  
-  - C.E.4 (25%)  
-  - C.E.13 (25%)  
-  - C.E.14 (30%)  
-  - C.G.2 (10%)  
-  - C.G.4 (10%)  
-
----
-
-# 🎉 ¡A combatir con estilo y arquitectura limpia! 💥
