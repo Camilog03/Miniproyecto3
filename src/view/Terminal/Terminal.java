@@ -57,6 +57,7 @@ public class Terminal implements View {
 
         System.out.print("Ingrese su pokemon:");
         indexBlue = scanner.nextByte();
+        scanner.nextLine();
 
         System.out.println("------ Pokemones Entrenador Rojo " + redTrainerName + "-------");
         while(!namesRed.isEmpty()){
@@ -104,6 +105,7 @@ public class Terminal implements View {
             }
             System.out.print("Selecciona tu ataque: ");
             indexAttack = scanner.nextByte() ;
+            scanner.nextLine();
             indexAttack--;
 
             if (turn) {
@@ -134,4 +136,7 @@ public class Terminal implements View {
     public void setController(Controller controller) {
         this.controller = controller;
     }
+
+    @Override
+    public void disable() {}
 }

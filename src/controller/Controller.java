@@ -36,6 +36,10 @@ public class Controller {
         this.view.setController(this);
     }
 
+    public void start(){
+        view.showPanel1();
+    }
+
     public void setTrainersNames(String trainerBlueName,  String trainerRedName) {
         trainerBlue.setTrainerName(trainerBlueName);
         trainerRed.setTrainerName(trainerRedName);
@@ -151,10 +155,11 @@ public class Controller {
 
     public void changeView(){
         if(isGui){
+            view.disable();
             view = new Terminal(); 
         } else {
             view = new src.view.Gui.Gui();
-            goToPanel3(indexPokemonRed, indexPokemonBlue);
+            view.showPanel1();
         }
         isGui = !isGui;
         view.setController(this);

@@ -15,7 +15,7 @@ public class App {
 
         //Uso con terminal como primera vista
         Controller controller = new Controller(new Terminal(), trainerBlue, trainerRed, false);
-        controller.goToPanel1();
+        controller.start();
 
         //Uso con GUI como primera vista descomentar para probar
         //new Controller(new Gui(), trainerBlue, trainerRed, true);
