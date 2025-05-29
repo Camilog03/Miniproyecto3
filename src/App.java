@@ -8,6 +8,8 @@ import src.model.characters.Trainer;
 import src.view.Gui.Gui;
 import src.view.Terminal.Terminal;
 
+import javax.naming.ldap.Control;
+
 public class App {
     public static void main(String[] args) {
         Trainer trainerBlue = new Trainer("");
@@ -18,7 +20,8 @@ public class App {
         controller.start();
 
         //Uso con GUI como primera vista descomentar para probar
-        //new Controller(new Gui(), trainerBlue, trainerRed, true);
+        Controller con = new Controller(new Gui(), trainerBlue, trainerRed, true);
+        con.start();
     }
 }
 

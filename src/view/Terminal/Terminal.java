@@ -104,6 +104,7 @@ public class Terminal implements View {
                 }
             }
             System.out.print("Selecciona tu ataque: ");
+
             indexAttack = scanner.nextByte() ;
             scanner.nextLine();
             indexAttack--;
@@ -119,6 +120,7 @@ public class Terminal implements View {
            
         }
         controller.checkAlivePokemon();
+        scanner.nextLine();
     }
 
     @Override

@@ -101,5 +101,6 @@ public class Gui extends JFrame implements View {
     @Override
     public void disable() {
         dispose();
+
     }
 }
