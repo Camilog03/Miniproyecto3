@@ -28,12 +28,7 @@ public class Terminal implements View {
         trainerBlue = scanner.nextLine();
         System.out.print("Nombre del Entrenador 2: ");
         trainerRed = scanner.nextLine();
-        System.out.println("Deseas cambiar a vista Gui? (S/N)");
-        String response = scanner.nextLine();
-        if (response.equalsIgnoreCase("S")) {
-            controller.changeView();
-            return;
-        }
+
 
         controller.setTrainersNames(trainerBlue, trainerRed);
         controller.goToPanel2();
@@ -42,6 +37,14 @@ public class Terminal implements View {
     @Override
     public void showPanel2(String blueTrainerName, String redTrainerName, Queue<String> namesBlue,
             Queue<String> namesRed, Queue<Boolean> aliveBlue, Queue<Boolean> aliveRed) {
+
+        System.out.println("Deseas cambiar a vista Gui? (S/N)");
+        String response = scanner.nextLine();
+
+        if (response.equalsIgnoreCase("S")) {
+            controller.changeView();
+            return;
+        }
 
         byte indexBlue, indexRed;
 
@@ -66,13 +69,7 @@ public class Terminal implements View {
         indexBlue--;
         indexRed--;
         
-        System.out.println("Deseas cambiar a vista Gui? (S/N)");
-        String response = scanner.nextLine();
-       
-        if (response.equalsIgnoreCase("S")) {
-            controller.changeView();
-            return;
-        }
+
         controller.goToPanel3(indexBlue, indexRed);
 
     }
