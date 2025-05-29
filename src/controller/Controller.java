@@ -2,6 +2,7 @@ package src.controller;
 
 import src.model.characters.Trainer;
 import src.model.pokemons.Pokemon;
+import src.view.Gui.Gui;
 import src.view.Terminal.Terminal;
 import src.view.View;
 import javax.swing.*;
@@ -36,11 +37,8 @@ public class Controller {
         this.view.setController(this);
     }
 
-    public void setTrainersNames(String trainerBlueName,  String trainerRedName) {
-        trainerBlue.setTrainerName(trainerBlueName);
-        trainerRed.setTrainerName(trainerRedName);
-        System.out.println(trainerRed.getTrainerName());
-        System.out.println(trainerBlue.getTrainerName());
+    public void start(){
+        view.showPanel1();
     }
 
     public void goToPanel2(){
@@ -94,6 +92,13 @@ public class Controller {
 
         view.showPanel3("Inicia el entrandor " + (turn?"AZUL":"ROJO") ,trainerBlue.getTrainerName(),trainerRed.getTrainerName(), trainerBlue.getSelectedPokemon(indexBlue).getName(),
                 trainerRed.getSelectedPokemon(indexRed).getName(), trainerBlue.getSelectedPokemon(indexBlue).getPath(), trainerRed.getSelectedPokemon(indexRed).getPath() ,blueAttacks, redAttacks, turn);
+    }
+
+    public void setTrainersNames(String trainerBlueName,  String trainerRedName) {
+        trainerBlue.setTrainerName(trainerBlueName);
+        trainerRed.setTrainerName(trainerRedName);
+        System.out.println(trainerRed.getTrainerName());
+        System.out.println(trainerBlue.getTrainerName());
     }
 
     public void checkAlivePokemon(){
@@ -151,10 +156,11 @@ public class Controller {
 
     public void changeView(){
         if(isGui){
+            view.disableView();
             view = new Terminal(); 
         } else {
-            view = new src.view.Gui.Gui();
-            goToPanel3(indexPokemonRed, indexPokemonBlue);
+            view = new Gui();
+            goToPanel2();
         }
         isGui = !isGui;
         view.setController(this);

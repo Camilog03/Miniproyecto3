@@ -36,12 +36,12 @@ public class Gui extends JFrame implements View {
         container.add(panel3, "panel 3");
 
 
-        setVisible(true);
+
     }
 
     @Override
     public void showPanel1() {
-
+        setVisible(true);
     }
 
     @Override
@@ -99,4 +99,8 @@ public class Gui extends JFrame implements View {
         panel3.setController(controller);
     }
 
+    @Override
+    public void disableView() {
+        setVisible(false);
+    }
 }

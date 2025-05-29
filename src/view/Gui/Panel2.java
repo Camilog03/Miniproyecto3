@@ -173,8 +173,6 @@ public class Panel2 extends JPanel {
         }
     }
 
-
-
     // Setters y Getters
     public void setTrainerBlueName(String name) {
         blueTrainerLabel.setText(name);

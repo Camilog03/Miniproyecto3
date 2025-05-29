@@ -15,4 +15,5 @@ public interface View {
     void updateHP(short hpBlue, short hpRed); //metodo unico para la gui
     void showMessage(String msg);
     void setController(Controller controller);
+    void disableView();
 }
